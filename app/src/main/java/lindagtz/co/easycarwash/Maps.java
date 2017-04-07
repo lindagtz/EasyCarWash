@@ -12,8 +12,11 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import android.Manifest;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class Maps extends ActionBarActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
@@ -43,11 +46,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
         LatLng car = new LatLng(19.673098, -99.015353);
-        mMap.addMarker(new MarkerOptions().position(car).title("Carwash").snippet("El carwash feliz").icon(BitmapDescriptorFactory.fromResource(R.mipmap.carro)));
+
+        mMap.addMarker(new MarkerOptions().position(car).title("Carwash")
+                .snippet("El carwash feliz\nhello\nhola\nyouju").icon(BitmapDescriptorFactory.fromResource(R.mipmap.carro)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(car));
 
         // Assume thisActivity is the current activity
-        int permissionCheck = ContextCompat.checkSelfPermission(MapsActivity.this,
+        int permissionCheck = ContextCompat.checkSelfPermission(Maps.this,
                 Manifest.permission.ACCESS_FINE_LOCATION);
         if(permissionCheck==0){
             mMap.setMyLocationEnabled(true);
@@ -58,4 +63,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     }
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.mapTypeNone:
+                mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
+                break;
+            case R.id.mapTypeNormal:
+                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                break;
+            case R.id.mapTypeSatellite:
+                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                break;
+            case R.id.mapTypeTerrain:
+                mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                break;
+            case R.id.mapTypeHybrid:
+                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                break;
+
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }
