@@ -1,6 +1,7 @@
 package lindagtz.co.easycarwash;
 
-import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 
@@ -10,15 +11,26 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import android.Manifest;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class Maps extends ActionBarActivity implements OnMapReadyCallback {
+import java.io.Console;
+
+public class Maps extends ActionBarActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
     private GoogleMap mMap;
+    private Marker marcador;
+    double lat= 0.0;
+    double lng=0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +55,64 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        Marker marker;
 
-        // Add a marker in Sydney and move the camera
+        if(mMap != null){
+            mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+                @Override
+                public View getInfoWindow(Marker marker) {
+                    return null;
+                }
+
+                @Override
+                public View getInfoContents(Marker marker) {
+
+
+
+                        View v= getLayoutInflater().inflate(R.layout.activity_infowindow, null);
+                        TextView tv1=(TextView) v.findViewById(R.id.tv_locality);
+                        TextView tv2=(TextView) v.findViewById(R.id.tv_lat);
+                        TextView tv3=(TextView) v.findViewById(R.id.tv_lng);
+                        TextView tv4=(TextView) v.findViewById(R.id.tv_snippet);
+
+                        tv1.setText(marker.getTitle());
+                        tv4.setText(marker.getSnippet());
+
+
+                    return v;
+
+
+                }
+            });
+        }
+
+        // Add a marker in a place and move the camera
         LatLng car = new LatLng(19.673098, -99.015353);
+        LatLng car2 = new LatLng(19.630964, -99.031613);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(car,18));
+        mMap.setOnInfoWindowClickListener(this);
 
-        mMap.addMarker(new MarkerOptions().position(car).title("Carwash")
-                .snippet("El carwash feliz\nhello\nhola\nyouju").icon(BitmapDescriptorFactory.fromResource(R.mipmap.carro)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(car));
+
+
+        MarkerOptions options= new MarkerOptions()
+                .position(car)
+                .title("hii")
+                .snippet("El carwash feliz\nhello\nhola\nyouju")
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.carro));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(car));
+                marker= mMap.addMarker(options);
+
+
+
+        //segundo autolavado
+        mMap.addMarker(new MarkerOptions()
+                .position(car2)
+                .title("Carwash 2")
+                .snippet("El carwash feliz 2")
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.carro)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(car2));
+
 
         // Assume thisActivity is the current activity
         int permissionCheck = ContextCompat.checkSelfPermission(Maps.this,
@@ -67,6 +130,7 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback {
         getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.mapTypeNone:
@@ -92,4 +156,12 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback {
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        Intent i = new Intent(this, InfoCarWash.class);
+        startActivity(i);
+
+
+    }
 }

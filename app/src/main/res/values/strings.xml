@@ -8,6 +8,14 @@
     <string name="map_type_satellite">Satellite</string>
     <string name="map_type_hybrid">Hybrid</string>
 
+
+    <string-array name="tipos">
+        <item>Carro</item>
+        <item>Moto</item>
+        <item>Camión</item>
+        <item>Bicicleta</item>
+    </string-array>
+
 </resources>
 
 

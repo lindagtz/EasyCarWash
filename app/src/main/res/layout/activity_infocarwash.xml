@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_more_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="lindagtz.co.easycarwash.InfoCarWash">
+
+    <TextView
+        android:text="WASHERS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView6"
+        android:layout_alignEnd="@+id/textView6"
+        android:layout_marginTop="21dp"
+        android:id="@+id/textView14" />
+
+    <TextView
+        android:text="Pedro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView4"
+        android:layout_alignEnd="@+id/textView14"
+        android:id="@+id/washer1"
+        android:layout_toEndOf="@+id/textView16" />
+
+    <TextView
+        android:text="Servicio a domicilio:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView18"
+        android:layout_alignEnd="@+id/textView17"
+        android:layout_marginTop="17dp"
+        android:id="@+id/textView19" />
+
+    <TextView
+        android:text="Tiempo tardanza:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView19"
+        android:layout_alignEnd="@+id/textView19"
+        android:layout_marginTop="19dp"
+        android:id="@+id/textView20" />
+
+    <TextView
+        android:text="Tiempo de experiencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:id="@+id/textView18"
+        android:layout_below="@+id/textView17"
+        android:layout_toStartOf="@+id/textView6" />
+
+    <TextView
+        android:text="Información general"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView16"
+        tools:fontFamily="sans-serif"
+        android:height="20dp"
+        android:textColor="@color/cast_libraries_material_featurehighlight_outer_highlight_default_color"
+        android:layout_below="@+id/washer1"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Dirección:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:id="@+id/textView17"
+        android:layout_below="@+id/textView16"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Evaluaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView20"
+        android:layout_alignStart="@+id/textView16"
+        android:layout_marginTop="11dp"
+        android:id="@+id/textView21"
+        android:textColorLink="@android:color/holo_blue_dark"
+        android:textColor="@android:color/holo_blue_dark"
+        android:height="20dp" />
+
+    <TextView
+        android:text="Autolavado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/user"
+        android:id="@+id/imageView4"
+        android:layout_below="@+id/textView14"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView17"
+        android:layout_toEndOf="@+id/textView21"
+        android:layout_marginStart="28dp"
+        android:id="@+id/txtAddress" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView18"
+        android:layout_toEndOf="@+id/textView21"
+        android:layout_marginStart="16dp"
+        android:id="@+id/txtExper" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView20"
+        android:layout_alignStart="@+id/txtExper"
+        android:id="@+id/txtServcasa" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView20"
+        android:layout_alignEnd="@+id/textView18"
+        android:id="@+id/txttimetar" />
+
+</RelativeLayout>

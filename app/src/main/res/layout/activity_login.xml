@@ -69,4 +69,14 @@
         android:layout_alignBaseline="@+id/editText2"
         android:layout_alignBottom="@+id/editText2"
         android:layout_alignStart="@+id/textView2" />
+
+    <TextView
+        android:text="Regístrate aquí!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Registralink"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:textColor="@color/cast_libraries_material_featurehighlight_outer_highlight_default_color" />
 </RelativeLayout>
