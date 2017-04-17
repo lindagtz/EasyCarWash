@@ -1,23 +1,202 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_registro_auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="lindagtz.co.easycarwash.RegistroAuto">
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
 
-    <TextView
-        android:text="Bienvenido CarWash, llena el formulario:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:id="@+id/textView22"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@android:color/holo_blue_dark"
-        android:height="100dp" />
-</RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/txtLocation"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="Buscar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnBuscarLoc"
+            android:onClick="onSearch" />
+
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="380dp"
+        android:layout_height="199dp"
+        tools:context="lindagtz.co.easycarwash.RegistroAuto" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="409dp">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:layout_marginStart="195dp"
+            android:id="@+id/txtLat"
+            android:layout_marginTop="169dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/txtlong"
+            android:layout_marginTop="12dp"
+            android:layout_below="@+id/txtLat"
+            android:layout_alignStart="@+id/txtLat" />
+
+        <TextView
+            android:text="Username:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="6dp"
+            android:layout_marginTop="32dp"
+            android:id="@+id/textView31" />
+
+        <TextView
+            android:text="Email:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView31"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="26dp"
+            android:id="@+id/textView32" />
+
+        <TextView
+            android:text="Password:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView32"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="25dp"
+            android:id="@+id/textView34" />
+
+        <TextView
+            android:text="Dirección:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView34"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="27dp"
+            android:id="@+id/textView35" />
+
+        <TextView
+            android:text="Latitud:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/txtlong"
+            android:layout_alignEnd="@+id/textView35"
+            android:id="@+id/textView36" />
+
+        <TextView
+            android:text="Longitud:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/txtlong"
+            android:layout_alignEnd="@+id/textView36"
+            android:id="@+id/textView37" />
+
+        <TextView
+            android:text="Teléfono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView37"
+            android:layout_alignEnd="@+id/textView31"
+            android:layout_marginTop="37dp"
+            android:id="@+id/textView38" />
+
+        <TextView
+            android:text="Nombre:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView38"
+            android:layout_alignStart="@+id/textView38"
+            android:layout_marginTop="19dp"
+            android:id="@+id/textView40" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textView31"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="12dp"
+            android:id="@+id/txtuserA" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:layout_below="@+id/txtuserA"
+            android:layout_alignEnd="@+id/txtuserA"
+            android:layout_marginTop="9dp"
+            android:id="@+id/txtemailA" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:layout_alignTop="@+id/textView34"
+            android:layout_alignStart="@+id/txtemailA"
+            android:id="@+id/txtpassA" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:layout_above="@+id/textView36"
+            android:layout_alignEnd="@+id/txtpassA"
+            android:id="@+id/txtDirecA" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:layout_alignBottom="@+id/textView40"
+            android:layout_alignEnd="@+id/txtDirecA"
+            android:layout_marginBottom="21dp"
+            android:id="@+id/txtphoneA" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
+            android:layout_alignTop="@+id/textView40"
+            android:layout_alignEnd="@+id/txtphoneA"
+            android:id="@+id/txtfirstnameA" />
+
+        <Button
+            android:text="ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtDirecA"
+            android:layout_toEndOf="@+id/txtDirecA"
+            android:layout_marginStart="23dp"
+            android:id="@+id/btnRegisAuto" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -8,6 +8,7 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -43,7 +44,9 @@
         <activity android:name=".InfoCarWash" />
         <activity android:name=".Infowindow" />
         <activity android:name=".Choose" />
-        <activity android:name=".RegistroAuto"></activity>
+        <activity
+            android:name=".RegistroAuto"
+            android:label="@string/title_activity_registro_auto"></activity>
     </application>
 
 </manifest>

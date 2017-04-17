@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -90,8 +91,8 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
         LatLng car = new LatLng(19.673098, -99.015353);
         LatLng car2 = new LatLng(19.630964, -99.031613);
         mMap.getUiSettings().setZoomControlsEnabled(true);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(car,18));
         mMap.setOnInfoWindowClickListener(this);
+        goToLocationZoom(19.709338, -98.966541, 10);
 
 
 
@@ -122,6 +123,14 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
 
         }
 
+
+
+
+    }
+    private void goToLocationZoom(double lat, double lng, float zoom) {
+        LatLng ll = new LatLng(lat, lng);
+        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(ll, zoom);
+        mMap.moveCamera(update);
 
 
 
