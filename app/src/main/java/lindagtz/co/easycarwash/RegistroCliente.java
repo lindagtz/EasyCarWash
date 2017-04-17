@@ -11,7 +11,7 @@ Button regCancelar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrocli);
+        setContentView(R.layout.activity_registro_cli);
 
         regCancelar = (Button) findViewById(R.id.RegCancel);
 
