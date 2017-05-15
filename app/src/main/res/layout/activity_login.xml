@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/logo"
         android:id="@+id/imageView"
-        android:layout_above="@+id/editText"
+        android:layout_above="@+id/editTextEmail"
         android:layout_marginBottom="15dp"
         android:layout_alignParentStart="true" />
 
@@ -45,9 +45,9 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/editText"
-        android:layout_alignStart="@+id/editText"
+        android:id="@+id/editTextPassword"
+        android:layout_below="@+id/editTextEmail"
+        android:layout_alignStart="@+id/editTextEmail"
         android:layout_marginTop="28dp" />
 
     <EditText
@@ -56,7 +56,7 @@
         android:inputType="textPersonName"
         android:text="Usuario"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/editTextEmail"
         android:layout_alignBaseline="@+id/textView2"
         android:layout_alignBottom="@+id/textView2"
         android:layout_alignParentEnd="true" />
@@ -66,8 +66,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView3"
-        android:layout_alignBaseline="@+id/editText2"
-        android:layout_alignBottom="@+id/editText2"
+        android:layout_alignBaseline="@+id/editTextPassword"
+        android:layout_alignBottom="@+id/editTextPassword"
         android:layout_alignStart="@+id/textView2" />
 
     <TextView
