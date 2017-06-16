@@ -30,7 +30,7 @@ public class Login extends AppCompatActivity {
     public static final int CONNECTION_TIMEOUT=10000;
     public static final int READ_TIMEOUT=15000;
 
-    private static final String WS_URL = "http://easycarwash.esy.es/rest/users/login";
+    private static final String WS_URL = "http://easycarwash.hol.es/PHP/login.inc.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,7 @@ public class Login extends AppCompatActivity {
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registrar = new Intent(Login.this, Choose.class);
+                Intent registrar = new Intent(Login.this, RegistroCliente.class);
                 startActivity(registrar);
             }
         });
@@ -82,7 +82,8 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private class AsyncLogin extends AsyncTask<String, String, String> {
+    private class AsyncLogin extends AsyncTask<String, String, String>
+    {
         ProgressDialog pdLoading = new ProgressDialog(Login.this);
         HttpURLConnection conn;
         URL url = null;
@@ -102,8 +103,7 @@ public class Login extends AppCompatActivity {
             try {
 
                 // Enter URL address where your php file resides
-                url = new URL(WS_URL);
-                Log.i("ws_url", url.toString());
+                url = new URL("http://easycarwash.hol.es/PHP/login.inc.php");
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
@@ -123,11 +123,9 @@ public class Login extends AppCompatActivity {
 
                 // Append parameters to URL
                 Uri.Builder builder = new Uri.Builder()
-                        .appendQueryParameter("data[User][email]", params[0])
-                        .appendQueryParameter("data[User][password]", params[1]);
+                        .appendQueryParameter("email", params[0])
+                        .appendQueryParameter("password", params[1]);
                 String query = builder.build().getEncodedQuery();
-
-                Log.i("ws query", query);
 
                 // Open connection for sending data
                 OutputStream os = conn.getOutputStream();
@@ -149,12 +147,8 @@ public class Login extends AppCompatActivity {
 
                 int response_code = conn.getResponseCode();
 
-                Log.i("response code", String.valueOf(response_code));
-
                 // Check if successful connection made
                 if (response_code == HttpURLConnection.HTTP_OK) {
-
-                    Log.i("response", "ok");
 
                     // Read data sent from server
                     InputStream input = conn.getInputStream();
@@ -166,14 +160,10 @@ public class Login extends AppCompatActivity {
                         result.append(line);
                     }
 
-                    Log.i("result", result.toString());
-
                     // Pass data to onPostExecute method
                     return(result.toString());
 
                 }else{
-
-                    Log.e("response", "error");
 
                     return("unsuccessful");
                 }
@@ -191,33 +181,17 @@ public class Login extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
 
-            Log.i("postExec", result);
-
-
-            // todo: parse json
-
             //this method will be running on UI thread
 
             pdLoading.dismiss();
 
-            JSONObject mainObject = null;
-            String send = null;
-            try {
-                mainObject = new JSONObject(result);
-                send = mainObject.getString("send");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            if(send.equalsIgnoreCase("ok"))
+            if(result.equalsIgnoreCase("true"))
             {
                 /* Here launching another activity when login successful. If you persist login state
                 use sharedPreferences of Android. and logout button to clear sharedPreferences.
                  */
 
-                Toast.makeText(Login.this, "Login success :)", Toast.LENGTH_LONG).show();
-
-                Intent intent = new Intent(Login.this, Maps.class);
+                Intent intent = new Intent(Login.this,Maps.class);
                 startActivity(intent);
                 Login.this.finish();
 
@@ -230,12 +204,8 @@ public class Login extends AppCompatActivity {
 
                 Toast.makeText(Login.this, "OOPs! Something went wrong. Connection Problem.", Toast.LENGTH_LONG).show();
 
-            } else {
-                Toast.makeText(Login.this, "Login error :(", Toast.LENGTH_LONG).show();
             }
         }
 
     }
-
-
 }

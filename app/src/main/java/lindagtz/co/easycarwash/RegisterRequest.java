@@ -10,7 +10,7 @@ import java.util.Map;
  */
 
 public class RegisterRequest extends StringRequest {
-        private static final String REGISTER_REQUEST_URL = "http://easycarwash.000webhostapp.com/Register.php";
+        private static final String REGISTER_REQUEST_URL = "";
         private Map<String, String> params;
 
         public RegisterRequest(String username, String email, String password, String direccion, double longitud, double latitud, int telefono,
