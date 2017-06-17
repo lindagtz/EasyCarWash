@@ -9,19 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="lindagtz.co.easycarwash.Login"
-    android:background="@color/wallet_bright_foreground_holo_dark">
-
-    <TextView
-        android:text="Usuario:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="208dp"
-        android:textSize="18sp" />
+    tools:context="lindagtz.co.easycarwash.Login">
 
     <Button
         android:text="Iniciar sesión"
@@ -34,55 +22,78 @@
         android:backgroundTint="@color/colorPrimaryDark"
         android:textSize="18sp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/logo"
-        android:id="@+id/imageView"
-        android:layout_above="@+id/editTextEmail"
-        android:layout_marginBottom="15dp"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/editTextPassword"
-        android:layout_below="@+id/editTextEmail"
-        android:layout_alignStart="@+id/editTextEmail"
-        android:layout_marginTop="28dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editTextEmail"
-        android:layout_alignBaseline="@+id/textView2"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="Contraseña:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView3"
-        android:layout_alignBaseline="@+id/editTextPassword"
-        android:layout_alignBottom="@+id/editTextPassword"
-        android:layout_alignStart="@+id/textView2"
-        android:textSize="18sp" />
 
     <TextView
         android:text="Regístrate aquí!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Registralink"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:clickable="true"
         android:textColor="@color/cast_libraries_material_featurehighlight_outer_highlight_default_color"
-        tools:textSize="18sp"
-        android:textSize="30sp"
-        android:layout_marginBottom="24dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/textView3" />
+        android:textSize="18sp" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese su email:"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="13dp">
+
+
+        <EditText
+            android:layout_width="146dp"
+            android:layout_height="54dp"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editTextEmail"
+            android:layout_alignBaseline="@+id/textView2"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_alignParentEnd="true"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+        android:layout_above="@+id/btnLogin"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="31dp">
+
+        <EditText
+            android:layout_width="219dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editTextPassword"
+            android:layout_marginTop="38dp"
+            android:layout_below="@+id/textInputLayout3"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:hint="Ingrese su Contraseña:" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logo"
+        android:id="@+id/imageView2"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:padding="10dp"
+        android:paddingBottom="5dp"
+        android:paddingEnd="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="15dp"
+        android:layout_marginBottom="250dp"
+        android:layout_above="@+id/textInputLayout5"
+        android:layout_alignStart="@+id/textInputLayout4"
+        android:layout_marginStart="2dp" />
 </RelativeLayout>
