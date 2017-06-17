@@ -50,7 +50,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
-
+//ya NO SE ESTA USANDO ESTA CLASE
 public class RegistroAuto extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;

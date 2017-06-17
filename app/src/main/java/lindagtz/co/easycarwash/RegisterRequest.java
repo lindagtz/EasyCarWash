@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Created by lenovo on 16/04/2017.
  */
-
+//esta clase NO SE UTILIZA JAJAJAJa
 public class RegisterRequest extends StringRequest {
         private static final String REGISTER_REQUEST_URL = "";
         private Map<String, String> params;

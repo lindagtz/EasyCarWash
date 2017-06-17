@@ -67,12 +67,18 @@ public class Login extends AppCompatActivity {
 
     // Triggers when LOGIN Button clicked
     public void checkLogin(View arg0) {
-
-        Toast.makeText(Login.this, "Athenticating...", Toast.LENGTH_LONG).show();
-
-        // Get text from email and passord field
+        // Get text from email and password field
         final String email = editTextEmail.getText().toString();
         final String password = editTextPassword.getText().toString();
+
+
+
+            Toast.makeText(Login.this, "Iniciando sesión...", Toast.LENGTH_LONG).show();
+
+
+
+
+
 
         Log.i("email", email);
         Log.i("password", password);
@@ -93,7 +99,7 @@ public class Login extends AppCompatActivity {
             super.onPreExecute();
 
             //this method will be running on UI thread
-            pdLoading.setMessage("\tLoading...");
+            pdLoading.setMessage("\tCargando...");
             pdLoading.setCancelable(false);
             pdLoading.show();
 
@@ -195,14 +201,21 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
                 Login.this.finish();
 
-            }else if (result.equalsIgnoreCase("false")){
+             }else if(result.equalsIgnoreCase(null)){
+                Toast.makeText(Login.this, "Por favor, ingrese sus datos", Toast.LENGTH_LONG).show();
+
+            }
+
+
+
+            else if (result.equalsIgnoreCase("false")){
 
                 // If username and password does not match display a error message
-                Toast.makeText(Login.this, "Invalid email or password", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Por favor, ingrese los datos correctos", Toast.LENGTH_LONG).show();
 
             } else if (result.equalsIgnoreCase("exception") || result.equalsIgnoreCase("unsuccessful")) {
 
-                Toast.makeText(Login.this, "OOPs! Something went wrong. Connection Problem.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Oops! Problemas en la conexión.", Toast.LENGTH_LONG).show();
 
             }
         }

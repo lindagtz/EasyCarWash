@@ -25,7 +25,7 @@ import java.net.URL;
 
 public class RegistroCliente extends AppCompatActivity {
 
-
+//declaramos todas las variables a usar
     EditText name, email, password, direccion;
     TextView auth_id;
     Button regCancelar, regGuardar;
@@ -84,7 +84,8 @@ public class RegistroCliente extends AppCompatActivity {
         protected void onPostExecute(String result) {
 
             Toast.makeText(getApplicationContext(), "Se almacenaron los datos correctamente", Toast.LENGTH_LONG).show();
-
+            Intent Login= new Intent(RegistroCliente.this, Login.class);
+            startActivity(Login);
         }
     }
     private class ConsultarDatos extends AsyncTask<String, Void, String> {

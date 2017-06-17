@@ -94,7 +94,8 @@
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/textView5"
         android:layout_marginBottom="68dp"
-        android:id="@+id/regGuardar" />
+        android:id="@+id/regGuardar"
+        android:backgroundTint="@color/colorPrimaryDark" />
 
     <Button
         android:text="Cancelar"
@@ -103,7 +104,8 @@
         android:layout_alignTop="@+id/regGuardar"
         android:layout_alignEnd="@+id/edDireccionc"
         android:layout_marginEnd="41dp"
-        android:id="@+id/regCancelar" />
+        android:id="@+id/regCancelar"
+        android:backgroundTint="@color/colorPrimaryDark" />
 
     <TextView
         android:text="2"
@@ -113,5 +115,15 @@
         android:layout_alignEnd="@+id/edDireccionc"
         android:layout_marginBottom="10dp"
         android:id="@+id/txtperm" />
+
+    <TextView
+        android:text="Bienvenido, llena el siguiente formulario:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="16sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/edNamec" />
 
 </RelativeLayout>

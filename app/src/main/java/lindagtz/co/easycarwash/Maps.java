@@ -68,16 +68,18 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
                 @Override
                 public View getInfoContents(Marker marker) {
 
-
+//Ventana de informacion de autolavados
 
                         View v= getLayoutInflater().inflate(R.layout.activity_infowindow, null);
                         TextView tv1=(TextView) v.findViewById(R.id.tv_locality);
+                    //informacion a mostrar en la ventana de informacion
                         TextView tv2=(TextView) v.findViewById(R.id.tv_lat);
                         TextView tv3=(TextView) v.findViewById(R.id.tv_lng);
                         TextView tv4=(TextView) v.findViewById(R.id.tv_snippet);
 
                         tv1.setText(marker.getTitle());
                         tv4.setText(marker.getSnippet());
+                    //descripcion cualquiera
 
 
                     return v;
@@ -90,17 +92,21 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
         // Add a marker in a place and move the camera
         LatLng car = new LatLng(19.673098, -99.015353);
         LatLng car2 = new LatLng(19.630964, -99.031613);
+
+
+        //para hacer zoom y verlo en el lugar deseado(tecamac)
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setOnInfoWindowClickListener(this);
         goToLocationZoom(19.709338, -98.966541, 10);
-
-
-
+//ir a tecamac
+String hola="hh";
+//informacion del primer marker, posicion, titulo...
         MarkerOptions options= new MarkerOptions()
                 .position(car)
-                .title("hii")
+                .title(hola)
                 .snippet("El carwash feliz\nhello\nhola\nyouju")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.carro));
+        //icono que se muestra
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(car));
                 marker= mMap.addMarker(options);
 
@@ -113,6 +119,7 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
                 .snippet("El carwash feliz 2")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.carro)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(car2));
+        //ubicar el marcador en la direccion declarada arriba
 
 
         // Assume thisActivity is the current activity

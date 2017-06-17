@@ -134,4 +134,13 @@
         android:layout_alignEnd="@+id/textView18"
         android:id="@+id/txttimetar" />
 
+    <Button
+        android:text="Solicitar Servicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btnSolicitar"
+        android:textColor="@color/colorPrimary" />
+
 </RelativeLayout>

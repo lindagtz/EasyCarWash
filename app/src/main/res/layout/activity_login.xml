@@ -9,7 +9,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="lindagtz.co.easycarwash.Login">
+    tools:context="lindagtz.co.easycarwash.Login"
+    android:background="@color/wallet_bright_foreground_holo_dark">
 
     <TextView
         android:text="Usuario:"
@@ -19,7 +20,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="208dp" />
+        android:layout_marginTop="208dp"
+        android:textSize="18sp" />
 
     <Button
         android:text="Iniciar sesión"
@@ -29,7 +31,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="72dp"
         android:id="@+id/btnLogin"
-        android:backgroundTint="@color/colorPrimaryDark" />
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:textSize="18sp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -67,15 +70,19 @@
         android:id="@+id/textView3"
         android:layout_alignBaseline="@+id/editTextPassword"
         android:layout_alignBottom="@+id/editTextPassword"
-        android:layout_alignStart="@+id/textView2" />
+        android:layout_alignStart="@+id/textView2"
+        android:textSize="18sp" />
 
     <TextView
         android:text="Regístrate aquí!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Registralink"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:clickable="true"
-        android:textColor="@color/cast_libraries_material_featurehighlight_outer_highlight_default_color" />
+        android:textColor="@color/cast_libraries_material_featurehighlight_outer_highlight_default_color"
+        tools:textSize="18sp"
+        android:textSize="30sp"
+        android:layout_marginBottom="24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/textView3" />
 </RelativeLayout>
