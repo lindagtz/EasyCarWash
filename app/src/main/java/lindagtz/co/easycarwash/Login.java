@@ -117,7 +117,7 @@ public class Login extends AppCompatActivity {
                 return "exception";
             }
             try {
-                // Setup HttpURLConnection class to send and receive data from php and mysql
+                // Setup HttpURLConnVolleyection class to send and receive data from php and mysql
                 conn = (HttpURLConnection)url.openConnection();
                 conn.setReadTimeout(READ_TIMEOUT);
                 conn.setConnectTimeout(CONNECTION_TIMEOUT);

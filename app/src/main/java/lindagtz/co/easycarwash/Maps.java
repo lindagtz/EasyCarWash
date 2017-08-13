@@ -2,6 +2,7 @@ package lindagtz.co.easycarwash;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 
@@ -17,6 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import android.Manifest;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +26,21 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.Console;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 
 public class Maps extends ActionBarActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
@@ -32,6 +48,8 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
     private Marker marcador;
     double lat= 0.0;
     double lng=0.0;
+    Button consulta;
+    TextView info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +59,17 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        consulta=(Button)findViewById(R.id.btnMaps);
+        info=(TextView)findViewById(R.id.txtInfo);
+
+
+     consulta.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             new ConsultarDatos().execute("http://easycarwash.hol.es/consulta.php");
+         }
+     });
+
     }
 
 
@@ -57,6 +86,7 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         Marker marker;
+
 
         if(mMap != null){
             mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
@@ -89,26 +119,37 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
             });
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //otros markers
         // Add a marker in a place and move the camera
-        LatLng car = new LatLng(19.673098, -99.015353);
-        LatLng car2 = new LatLng(19.630964, -99.031613);
-
-
-        //para hacer zoom y verlo en el lugar deseado(tecamac)
-        mMap.getUiSettings().setZoomControlsEnabled(true);
-        mMap.setOnInfoWindowClickListener(this);
-        goToLocationZoom(19.709338, -98.966541, 10);
-//ir a tecamac
-String hola="hh";
-//informacion del primer marker, posicion, titulo...
-        MarkerOptions options= new MarkerOptions()
+       // LatLng car = new LatLng(19.673098, -99.015353);
+       // LatLng car2 = new LatLng(19.630964, -99.031613);
+       /* MarkerOptions options= new MarkerOptions()
                 .position(car)
-                .title(hola)
+                .title("hi")
                 .snippet("El carwash feliz\nhello\nhola\nyouju")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.carro));
         //icono que se muestra
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(car));
-                marker= mMap.addMarker(options);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(car));
+        marker= mMap.addMarker(options);
 
 
 
@@ -120,6 +161,16 @@ String hola="hh";
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.carro)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(car2));
         //ubicar el marcador en la direccion declarada arriba
+
+*/
+
+        //para hacer zoom y verlo en el lugar deseado(tecamac)
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.setOnInfoWindowClickListener(this);
+        goToLocationZoom(19.709338, -98.966541, 10);
+//ir a tecamac
+String hola="hh";
+//informacion del primer marker, posicion, titulo...
 
 
         // Assume thisActivity is the current activity
@@ -171,6 +222,150 @@ String hola="hh";
 
         return super.onOptionsItemSelected(item);
     }
+
+//aqui iria la consulta
+
+
+
+    private class ConsultarDatos extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            // params comes from the execute() call: params[0] is the url.
+            try {
+                return downloadUrl(urls[0]);
+            } catch (IOException e) {
+                return "Unable to retrieve web page. URL may be invalid.";
+            }
+        }
+
+        // onPostExecute displays the results of the AsyncTask.
+
+        protected void onPostExecute(String result) {
+
+
+            try {
+
+               JSONObject ja= new JSONObject(result);
+                //JSONArray autolavados= ja.getJSONArray("autolavados");
+                JSONArray jsonArray= ja.getJSONArray("autolavados");;
+//HERE I ADD THE MARKERSSS OF THE DATABASE
+                //ArrayList<MiObjeto> listaObj =new ArrayList<MiObjeto> ();
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    // Create a marker for each carwashhh in the JSON data.
+                    JSONObject jsonObj = jsonArray.getJSONObject(i);
+                    mMap.addMarker(new MarkerOptions()
+                            .icon(BitmapDescriptorFactory.fromResource(R.mipmap.carro))
+                            .title(jsonObj.getString("nombre"))
+                            .snippet(jsonObj.getString("nombre"))
+                            .position(new LatLng(
+                                    jsonObj.getDouble("latitud"),
+                                    jsonObj.getDouble("longitud")
+                            ))
+                    );
+                }
+                /*for(MiObjeto obj: listaObj){
+                    MarkerOptions markerOptions = new MarkerOptions()
+                            .position(new LatLng(obj.getLat(), obj.getLng()))
+                            .title(obj.getNombre());
+
+                    mMap.addMarker(markerOptions);
+                }
+
+*/
+
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+        }
+
+
+    }
+
+    public class MiObjeto {
+        String nombre;
+        double latitud;
+        double longitud;
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+
+        public void setLat(double latitud) {
+            this.latitud = latitud;
+        }
+
+        public double getLat() {
+            return latitud;
+        }
+
+        public void setLng(double longitud) {
+            this.longitud = longitud;
+        }
+
+        public double getLng() {
+            return longitud;
+        }
+    }
+
+
+
+
+
+
+
+
+    private String downloadUrl(String myurl) throws IOException {
+        Log.i("URL",""+myurl);
+        myurl = myurl.replace(" ","%20");
+        InputStream is = null;
+        // Only display the first 500 characters of the retrieved
+        // web page content.
+        int len = 500;
+
+        try {
+            URL url = new URL(myurl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(10000 /* milliseconds */);
+            conn.setConnectTimeout(15000 /* milliseconds */);
+            conn.setRequestMethod("GET");
+            conn.setDoInput(true);
+            // Starts the query
+            conn.connect();
+            int response = conn.getResponseCode();
+            Log.d("respuesta", "The response is: " + response);
+            is = conn.getInputStream();
+
+            // Convert the InputStream into a string
+            String contentAsString = readIt(is, len);
+            return contentAsString;
+
+            // Makes sure that the InputStream is closed after the app is
+            // finished using it.
+        } finally {
+            if (is != null) {
+                is.close();
+            }
+        }
+    }
+
+    public String readIt(InputStream stream, int len) throws IOException, UnsupportedEncodingException
+    {
+        Reader reader = null;
+        reader = new InputStreamReader(stream, "UTF-8");
+        char[] buffer = new char[len];
+        reader.read(buffer);
+        return new String(buffer);
+    }
+
+
 
 
     @Override

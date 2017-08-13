@@ -26,7 +26,7 @@ import java.net.URL;
 public class RegistroCliente extends AppCompatActivity {
 
 //declaramos todas las variables a usar
-    EditText name, email, password, direccion;
+    EditText name, email, password, direccion, telefono;
     TextView auth_id;
     Button regCancelar, regGuardar;
 
@@ -41,6 +41,7 @@ public class RegistroCliente extends AppCompatActivity {
         email = (EditText) findViewById(R.id.edEmailc);
         password = (EditText) findViewById(R.id.edPasswordc);
         direccion = (EditText) findViewById(R.id.edDireccionc);
+        telefono = (EditText) findViewById(R.id.edTelf);
         auth_id=(TextView) findViewById(R.id.txtperm);
         regGuardar = (Button) findViewById(R.id.regGuardar);
 
@@ -49,7 +50,11 @@ public class RegistroCliente extends AppCompatActivity {
             public void onClick(View v) {
 
                 //new RegistroCliente.CargarDatos().execute("http://easycarwash.hol.es/registrocli.php?name=" + name.getText().toString() + "&email=" + email.getText().toString()+ "&password=" + password.getText().toString()+ "&direccion=" + direccion.getText().toString()+ "&telefono=" + telefono.getText().toString()+ "&tipo=" + tipo.getText().toString()+ "&color=" + color.getText().toString()+ "&marca=" + marca.getText().toString() + "&auth_id=" + auth_id.getText().toString());
-                new RegistroCliente.CargarDatos().execute("http://easycarwash.hol.es/registrocli.php?name=" + name.getText().toString() + "&email=" + email.getText().toString()+ "&password=" + password.getText().toString()+ "&direccion=" + direccion.getText().toString()+ "&auth_id=" + auth_id.getText().toString());
+                new RegistroCliente.CargarDatos().execute("http://easycarwash.hol.es/registrocli.php?name=" +
+                        name.getText().toString() + "&email=" + email.getText().toString()+ "&password=" +
+                        password.getText().toString()+ "&direccion=" +
+                        direccion.getText().toString()+ "&telefono=" +
+                        telefono.getText().toString()+"&auth_id=" + auth_id.getText().toString());
 
             }
         });
