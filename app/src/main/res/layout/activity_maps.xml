@@ -4,26 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:id="@+id/idLayout">
+
+    <Button
+        android:text="Consultar autolavados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnMaps"
+        android:fontFamily="sans-serif-condensed"
+        android:background="?android:attr/colorButtonNormal" />
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="376dp"
-        android:layout_height="273dp"
+        android:layout_width="395dp"
+        android:layout_height="290dp"
         tools:context="lindagtz.co.easycarwash.Maps"
         app:layout_collapseParallaxMultiplier="0.3" />
 
-    <Button
-        android:text="Consultar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnMaps" />
-
     <TextView
+        android:text="TextView"
         android:layout_width="match_parent"
-        android:layout_height="228dp"
-        android:id="@+id/txtInfo" />
+        android:layout_height="93dp"
+        android:id="@+id/txtinfor" />
 
 
 </LinearLayout>

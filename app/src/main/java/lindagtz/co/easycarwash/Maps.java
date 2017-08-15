@@ -22,7 +22,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,8 +48,6 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
 
     private GoogleMap mMap;
     private Marker marcador;
-    double lat= 0.0;
-    double lng=0.0;
     Button consulta;
     TextView info;
 
@@ -55,12 +55,19 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        LinearLayout layout = (LinearLayout) findViewById(R.id.idLayout);
+        AlphaAnimation animation = new AlphaAnimation(0.0f , 1.0f ) ;
+        animation.setFillAfter(true);
+        animation.setDuration(1200);
+//apply the animation ( fade In ) to your LAyout
+        layout.startAnimation(animation);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         consulta=(Button)findViewById(R.id.btnMaps);
-        info=(TextView)findViewById(R.id.txtInfo);
+        info=(TextView)findViewById(R.id.txtinfor);
 
 
      consulta.setOnClickListener(new View.OnClickListener() {
@@ -103,10 +110,8 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
                         View v= getLayoutInflater().inflate(R.layout.activity_infowindow, null);
                         TextView tv1=(TextView) v.findViewById(R.id.tv_locality);
                     //informacion a mostrar en la ventana de informacion
-                        TextView tv2=(TextView) v.findViewById(R.id.tv_lat);
-                        TextView tv3=(TextView) v.findViewById(R.id.tv_lng);
-                        TextView tv4=(TextView) v.findViewById(R.id.tv_snippet);
 
+                        TextView tv4=(TextView) v.findViewById(R.id.tv_snippet);
                         tv1.setText(marker.getTitle());
                         tv4.setText(marker.getSnippet());
                     //descripcion cualquiera
@@ -118,24 +123,6 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
                 }
             });
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         //otros markers
@@ -167,13 +154,14 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
         //para hacer zoom y verlo en el lugar deseado(tecamac)
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setOnInfoWindowClickListener(this);
+        //abror ventana de informacion
         goToLocationZoom(19.709338, -98.966541, 10);
 //ir a tecamac
-String hola="hh";
+
 //informacion del primer marker, posicion, titulo...
 
 
-        // Assume thisActivity is the current activity
+        // Assume thisActivity is the current activity, para activar mi ubicacion
         int permissionCheck = ContextCompat.checkSelfPermission(Maps.this,
                 Manifest.permission.ACCESS_FINE_LOCATION);
         if(permissionCheck==0){
@@ -189,7 +177,6 @@ String hola="hh";
         LatLng ll = new LatLng(lat, lng);
         CameraUpdate update = CameraUpdateFactory.newLatLngZoom(ll, zoom);
         mMap.moveCamera(update);
-
 
 
     }
@@ -248,17 +235,21 @@ String hola="hh";
 
                JSONObject ja= new JSONObject(result);
                 //JSONArray autolavados= ja.getJSONArray("autolavados");
-                JSONArray jsonArray= ja.getJSONArray("autolavados");;
+                JSONArray jsonArray= ja.getJSONArray("autolavados");
+
 //HERE I ADD THE MARKERSSS OF THE DATABASE
                 //ArrayList<MiObjeto> listaObj =new ArrayList<MiObjeto> ();
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     // Create a marker for each carwashhh in the JSON data.
                     JSONObject jsonObj = jsonArray.getJSONObject(i);
+
+                    String id_auto=jsonObj.getString("id_autolavado");
                     mMap.addMarker(new MarkerOptions()
+
                             .icon(BitmapDescriptorFactory.fromResource(R.mipmap.carro))
                             .title(jsonObj.getString("nombre"))
-                            .snippet(jsonObj.getString("nombre"))
+                            .snippet(jsonObj.getString("descripcion"))
                             .position(new LatLng(
                                     jsonObj.getDouble("latitud"),
                                     jsonObj.getDouble("longitud")
@@ -284,43 +275,6 @@ String hola="hh";
 
 
     }
-
-    public class MiObjeto {
-        String nombre;
-        double latitud;
-        double longitud;
-        public void setNombre(String nombre) {
-            this.nombre = nombre;
-        }
-
-        public String getNombre() {
-            return nombre;
-        }
-
-
-        public void setLat(double latitud) {
-            this.latitud = latitud;
-        }
-
-        public double getLat() {
-            return latitud;
-        }
-
-        public void setLng(double longitud) {
-            this.longitud = longitud;
-        }
-
-        public double getLng() {
-            return longitud;
-        }
-    }
-
-
-
-
-
-
-
 
     private String downloadUrl(String myurl) throws IOException {
         Log.i("URL",""+myurl);
@@ -371,6 +325,7 @@ String hola="hh";
     @Override
     public void onInfoWindowClick(Marker marker) {
         Intent i = new Intent(this, InfoCarWash.class);
+        //comienza la nueva actividad a mostrar de la ventana de informacion
         startActivity(i);
 
 

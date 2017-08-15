@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="87dp"
+        android:layout_height="84dp"
         android:src="@mipmap/carro" />
 
     <LinearLayout
@@ -18,36 +18,28 @@
 
         <TextView
             android:id="@+id/tv_locality"
-            android:layout_width="wrap_content"
+            android:layout_width="119dp"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/tv_lat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/tv_lng"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text=" Title"
+            android:textSize="30sp"
+            android:fontFamily="cursive" />
 
         <TextView
             android:id="@+id/tv_snippet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:autoText="false"
+            android:text="   Description" />
 
     </LinearLayout>
 
     <Button
         android:text="Ver más"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/infoButton"
+        android:background="@color/colorPrimaryDark"
+        android:fontFamily="cursive"
         android:layout_weight="1" />
 
 

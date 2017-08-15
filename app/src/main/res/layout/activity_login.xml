@@ -78,22 +78,27 @@
 
     </android.support.design.widget.TextInputLayout>
 
-    <ImageView
+    <TextView
+        android:text="Bienvenido a"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/logo"
-        android:id="@+id/imageView2"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:padding="10dp"
-        android:paddingBottom="5dp"
-        android:paddingEnd="5dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingStart="5dp"
-        android:paddingTop="15dp"
-        android:layout_marginBottom="250dp"
-        android:layout_above="@+id/textInputLayout5"
-        android:layout_alignStart="@+id/textInputLayout4"
-        android:layout_marginStart="2dp" />
+        android:layout_marginTop="45dp"
+        android:id="@+id/textView3"
+        android:fontFamily="cursive"
+        android:textColor="@color/colorPrimary"
+        android:textSize="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="EasyCarWash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView9"
+        android:textColor="?attr/colorPrimaryDark"
+        android:textSize="50sp"
+        android:fontFamily="cursive"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
