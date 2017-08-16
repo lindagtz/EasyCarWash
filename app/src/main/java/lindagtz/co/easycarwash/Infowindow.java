@@ -23,11 +23,20 @@ public class Infowindow extends AppCompatActivity {
 
 
 
+        infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+
+            }
+        });
+
+
+    }
 
 
 
 
     }
 
-}
+

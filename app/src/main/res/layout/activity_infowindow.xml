@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:background="@color/common_google_signin_btn_text_light_disabled">
 
     <ImageView
         android:id="@+id/imageView1"
@@ -14,22 +15,27 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/tv_locality"
             android:layout_width="119dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text=" Title"
-            android:textSize="30sp"
-            android:fontFamily="cursive" />
+            android:textSize="20sp"
+            android:fontFamily="cursive"
+            android:textColor="@color/cast_intro_overlay_background_color" />
 
         <TextView
             android:id="@+id/tv_snippet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:autoText="false"
-            android:text="   Description" />
+            android:text="   Description"
+            android:textSize="5sp"
+            android:fontFamily="cursive"
+            android:textColor="@color/cast_expanded_controller_ad_container_white_stripe_color" />
 
     </LinearLayout>
 

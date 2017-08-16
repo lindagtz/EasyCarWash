@@ -126,22 +126,4 @@
         android:layout_alignParentTop="true"
         android:layout_alignEnd="@+id/edNamec" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:ems="10"
-        android:id="@+id/edTelf"
-        android:layout_alignTop="@+id/idTelef"
-        android:layout_alignStart="@+id/edDireccionc" />
-
-    <TextView
-        android:text="Teléfono"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
-        android:id="@+id/idTelef"
-        android:layout_below="@+id/edDireccionc"
-        android:layout_alignStart="@+id/textView8" />
-
 </RelativeLayout>

@@ -50,24 +50,20 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
     private Marker marcador;
     Button consulta;
     TextView info;
+    public String descrip=null;
+    public String nombr=null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        LinearLayout layout = (LinearLayout) findViewById(R.id.idLayout);
-        AlphaAnimation animation = new AlphaAnimation(0.0f , 1.0f ) ;
-        animation.setFillAfter(true);
-        animation.setDuration(1200);
-//apply the animation ( fade In ) to your LAyout
-        layout.startAnimation(animation);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         consulta=(Button)findViewById(R.id.btnMaps);
-        info=(TextView)findViewById(R.id.txtinfor);
 
 
      consulta.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +74,10 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
      });
 
     }
-
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 
     /**
      * Manipulates the map once available.
@@ -243,13 +242,22 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
                 for (int i = 0; i < jsonArray.length(); i++) {
                     // Create a marker for each carwashhh in the JSON data.
                     JSONObject jsonObj = jsonArray.getJSONObject(i);
+                    Objetos obj= new Objetos(jsonObj.getString("id_autolavado"), jsonObj.getString("nombre"), jsonObj.getString("descripcion"),
+                            jsonObj.getDouble("latitud"), jsonObj.getDouble("longitud"));
+                    descrip=obj.getDescripcion();
+                    nombr=obj.getNombre();
+                    Log.i(descrip,"des");
+                    Log.i(nombr,"nombss");
 
-                    String id_auto=jsonObj.getString("id_autolavado");
+
+                    // info.setText(jsonObj.getString("id_autolavado"));
+                    Log.i(jsonObj.getString("id_autolavado"),"id");
+
+
                     mMap.addMarker(new MarkerOptions()
-
                             .icon(BitmapDescriptorFactory.fromResource(R.mipmap.carro))
-                            .title(jsonObj.getString("nombre"))
-                            .snippet(jsonObj.getString("descripcion"))
+                            .title(jsonObj.getString("nombre")+"\n"+jsonObj.getString("descripcion"))
+                            .snippet(jsonObj.getString("id_autolavado"))
                             .position(new LatLng(
                                     jsonObj.getDouble("latitud"),
                                     jsonObj.getDouble("longitud")
@@ -266,6 +274,7 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
 
 */
 
+
             } catch (JSONException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -276,7 +285,67 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
 
     }
 
-    private String downloadUrl(String myurl) throws IOException {
+    public class Objetos {
+
+        private String id_autolavado;
+        private String nombre;
+        private String descripcion;
+        private double latitud;
+        private double longitud;
+
+
+        public Objetos(String id_autolavado, String nombre, String descripcion, double latitud, double longitud) {
+            super();
+            this.id_autolavado = id_autolavado;
+            this.nombre = nombre;
+            this.descripcion = descripcion;
+            this.latitud = latitud;
+            this.longitud = longitud;
+
+        }
+
+        public void setId_autolavado(String id_autolavado) {
+            this.id_autolavado = id_autolavado;
+        }
+
+        public String getId_autolavado() {
+            return id_autolavado;
+        }
+
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public void setDescripcion(String descripcion) {
+            this.descripcion = descripcion;
+        }
+
+        public String getDescripcion() {
+            return descripcion;
+        }
+
+        public void setLatitud(double latitud) {
+            this.latitud = latitud;
+        }
+
+        public double getLatitud() {
+            return latitud;
+        }
+
+        public void setLongitud(double longitud) {
+            this.longitud = longitud;
+        }
+
+        public double getLongitud() {
+            return longitud;
+        }
+    }
+
+        private String downloadUrl(String myurl) throws IOException {
         Log.i("URL",""+myurl);
         myurl = myurl.replace(" ","%20");
         InputStream is = null;
@@ -324,7 +393,16 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
 
     @Override
     public void onInfoWindowClick(Marker marker) {
+       // Toast.makeText(this, descrip, Toast.LENGTH_LONG).show();
+        String id=marker.getSnippet();
         Intent i = new Intent(this, InfoCarWash.class);
+        i.putExtra("id_autolavado", id);
+        i.putExtra("nombre", nombr);
+
+        i.putExtra("descripcion", descrip);
+
+        Log.i(nombr,"descrip aq");
+
         //comienza la nueva actividad a mostrar de la ventana de informacion
         startActivity(i);
 

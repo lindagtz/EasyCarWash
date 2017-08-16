@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -20,94 +20,71 @@
     tools:context="lindagtz.co.easycarwash.InfoCarWash">
 
     <TextView
-        android:text="WASHERS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView6"
-        android:layout_alignEnd="@+id/textView6"
-        android:layout_marginTop="21dp"
-        android:id="@+id/textView14" />
-
-    <TextView
         android:text="Pedro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView4"
         android:layout_alignEnd="@+id/textView14"
         android:id="@+id/washer1"
-        android:layout_toEndOf="@+id/textView16" />
+        android:layout_toEndOf="@+id/textView16"
+        android:textSize="18sp" />
 
     <TextView
-        android:text="Servicio a domicilio:"
+        android:text="Horarios:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView18"
-        android:layout_alignEnd="@+id/textView17"
         android:layout_marginTop="17dp"
-        android:id="@+id/textView19" />
+        android:id="@+id/textView19"
+        android:textSize="18sp"
+        android:paddingTop="15dp" />
 
     <TextView
-        android:text="Tiempo tardanza:"
+        android:text="Servicios:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView19"
-        android:layout_alignEnd="@+id/textView19"
         android:layout_marginTop="19dp"
-        android:id="@+id/textView20" />
+        android:id="@+id/textView20"
+        android:textSize="18sp"
+        android:paddingBottom="5dp"
+        android:paddingTop="15dp" />
 
     <TextView
-        android:text="Tiempo de experiencia"
+        android:text="Teléfono:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
         android:id="@+id/textView18"
         android:layout_below="@+id/textView17"
-        android:layout_toStartOf="@+id/textView6"
-        android:layout_alignEnd="@+id/txtExper" />
+        android:layout_alignEnd="@+id/txtTel"
+        android:textSize="18sp"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="Información general"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView16"
-        tools:fontFamily="sans-serif"
-        android:height="20dp"
+        tools:fontFamily="sans-serif-condensed"
+        android:height="25dp"
         android:textColor="@color/cast_libraries_material_featurehighlight_outer_highlight_default_color"
         android:layout_below="@+id/washer1"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="20sp" />
 
     <TextView
-        android:text="Dirección:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:id="@+id/textView17"
-        android:layout_below="@+id/textView16"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="Evaluaciones"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView20"
-        android:layout_alignStart="@+id/textView16"
-        android:layout_marginTop="11dp"
-        android:id="@+id/textView21"
-        android:textColorLink="@android:color/holo_blue_dark"
-        android:textColor="@android:color/holo_blue_dark"
-        android:height="20dp" />
-
-    <TextView
-        android:text="Autolavado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView6"
+        android:id="@+id/txtNombreAu"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/cast_expanded_controller_background_color"
+        android:textSize="30sp" />
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         app:srcCompat="@drawable/user"
         android:id="@+id/imageView4"
         android:layout_below="@+id/textView14"
@@ -127,63 +104,68 @@
         android:layout_alignBottom="@+id/textView18"
         android:layout_toEndOf="@+id/textView21"
         android:layout_marginStart="16dp"
-        android:id="@+id/txtExper" />
+        android:id="@+id/txtTel" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView20"
-        android:layout_alignStart="@+id/txtExper"
-        android:id="@+id/txtServcasa" />
+        android:layout_alignStart="@+id/txtTel"
+        android:id="@+id/txtHorario" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView20"
         android:layout_alignEnd="@+id/textView18"
-        android:id="@+id/txttimetar" />
+        android:id="@+id/txtServic" />
+
+    <TextView
+        android:text="WASHERS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:id="@+id/textView14"
+        android:layout_below="@+id/txtNombreAu"
+        android:layout_alignEnd="@+id/btnSolicitar"
+        android:gravity="center"
+        android:layout_alignStart="@+id/btnSolicitar"
+        android:textSize="18sp" />
 
     <Button
         android:text="Solicitar Servicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:id="@+id/btnSolicitar"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="69dp"
+        android:layout_below="@+id/textView21"
+        android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="TextView"
+        android:text="Evaluaciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView18"
-        android:id="@+id/txtDirecAut"
-        android:layout_alignEnd="@+id/imageView4" />
+        android:layout_marginTop="59dp"
+        android:id="@+id/textView21"
+        android:textColorLink="@android:color/holo_blue_dark"
+        android:textColor="@android:color/holo_blue_dark"
+        android:height="20dp"
+        android:textSize="18sp"
+        android:layout_below="@+id/textView20"
+        android:layout_toStartOf="@+id/btnSolicitar"
+        android:width="150dp" />
 
     <TextView
-        android:text="TextView"
+        android:text="Dirección:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView18"
-        android:id="@+id/txtTiempExp"
-        android:layout_alignEnd="@+id/txtDirecAut"
-        android:layout_alignStart="@+id/txtDirecAut" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/txtServcasa"
-        android:layout_alignEnd="@+id/txtTiempExp"
-        android:id="@+id/txtServDom" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txttimetar"
-        android:layout_alignStart="@+id/txtServDom"
-        android:id="@+id/txtTiempTar" />
+        android:layout_marginTop="14dp"
+        android:id="@+id/textView17"
+        android:textSize="18sp"
+        android:layout_below="@+id/textView16"
+        android:layout_alignParentStart="true"
+        android:paddingTop="10dp" />
 
 </RelativeLayout>
 </ScrollView>

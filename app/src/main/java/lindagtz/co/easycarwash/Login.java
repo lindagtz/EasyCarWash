@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +25,8 @@ import java.net.URL;
 public class Login extends AppCompatActivity {
     Button iniciar;
     TextView registrar;
-
+    TextInputLayout inpEmail, inpPass;
+    boolean email=false;
     private EditText editTextEmail;
     private EditText editTextPassword;
 
@@ -43,6 +46,9 @@ public class Login extends AppCompatActivity {
 
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        inpEmail=(TextInputLayout)findViewById(R.id.inpEmail);
+        inpPass=(TextInputLayout)findViewById(R.id.inpPass);
+
 
         iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +64,7 @@ public class Login extends AppCompatActivity {
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent registrar = new Intent(Login.this, RegistroCliente.class);
                 startActivity(registrar);
             }
@@ -68,23 +75,28 @@ public class Login extends AppCompatActivity {
     // Triggers when LOGIN Button clicked
     public void checkLogin(View arg0) {
         // Get text from email and password field
-        final String email = editTextEmail.getText().toString();
+        final String emaili = editTextEmail.getText().toString();
         final String password = editTextPassword.getText().toString();
 
 
 
             Toast.makeText(Login.this, "Iniciando sesión...", Toast.LENGTH_LONG).show();
 
+            if(Patterns.EMAIL_ADDRESS.matcher(emaili).matches()==false){
+            inpEmail.setError("Correo inválido");
+            email=false;
+            }else {
+                email = true;
+                inpEmail.setError(null);
+                Log.i("email", emaili);
+                Log.i("password", password);
+
+                // Initialize  AsyncLogin() class with email and password
+                new AsyncLogin().execute(emaili,password);
+            }
 
 
 
-
-
-        Log.i("email", email);
-        Log.i("password", password);
-
-        // Initialize  AsyncLogin() class with email and password
-        new AsyncLogin().execute(email,password);
 
     }
 
