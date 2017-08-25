@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.Marker;
 
-public class Infowindow extends AppCompatActivity {
+public class Infowindow extends NavDrawer {
     Button infoButton;
 
 

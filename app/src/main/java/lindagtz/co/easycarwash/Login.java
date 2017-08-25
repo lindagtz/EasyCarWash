@@ -196,6 +196,7 @@ public class Login extends AppCompatActivity {
 
         }
 
+
         @Override
         protected void onPostExecute(String result) {
 
@@ -209,7 +210,7 @@ public class Login extends AppCompatActivity {
                 use sharedPreferences of Android. and logout button to clear sharedPreferences.
                  */
 
-                Intent intent = new Intent(Login.this,Maps.class);
+                Intent intent = new Intent(Login.this,Welcome.class);
                 startActivity(intent);
                 Login.this.finish();
 
@@ -232,5 +233,10 @@ public class Login extends AppCompatActivity {
             }
         }
 
+
+    }
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }

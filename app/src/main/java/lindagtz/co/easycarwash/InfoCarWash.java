@@ -27,28 +27,32 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class InfoCarWash extends AppCompatActivity {
+public class InfoCarWash extends NavDrawer {
 TextView direccion, telefono, horario, servicio, nombre;
 String id_auto,id_user;
     Button SolicitarSer;
-    private static TextView text_v;
-    private static RatingBar rating_b;
+    protected static TextView text_v;
+    protected static RatingBar rating_b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_infocarwash);
-
-
         Bundle bundle = getIntent().getExtras();
         id_auto=bundle.getString("id_autolavado");
-
         direccion=(TextView) findViewById(R.id.txtAddress);
         telefono=(TextView) findViewById(R.id.txtTel);
         horario=(TextView)findViewById(R.id.txtHorario);
         servicio=(TextView)findViewById(R.id.txtServic);
         nombre=(TextView)findViewById(R.id.txtNombreAu);
         SolicitarSer=(Button)findViewById(R.id.btnSolicitar);
+        rating_b = (RatingBar) findViewById(R.id.ratingBar);
+        text_v = (TextView)findViewById(R.id.txtEv);
+
+
+
+
         listenerForRatingBar();
 
         SolicitarSer.setOnClickListener(
@@ -62,15 +66,14 @@ String id_auto,id_user;
                 }
         );
 
-
+onStart();
 
     }
 
 
 
     private void listenerForRatingBar() {
-        rating_b = (RatingBar) findViewById(R.id.ratingBar);
-        text_v = (TextView)findViewById(R.id.txtEv);
+
 
         rating_b.setOnRatingBarChangeListener(
                 new RatingBar.OnRatingBarChangeListener() {

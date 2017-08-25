@@ -5,7 +5,9 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -44,11 +46,11 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class Maps extends ActionBarActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
-
+public class Maps extends NavDrawer implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
     private GoogleMap mMap;
     private Marker marcador;
     Button consulta;
+    SupportMapFragment mapFragment;
     TextView info;
     public String descrip=null;
     public String nombr=null;
@@ -57,13 +59,17 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_maps);
+        consulta=(Button)findViewById(R.id.btnMaps);
+        mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+
         mapFragment.getMapAsync(this);
-        consulta=(Button)findViewById(R.id.btnMaps);
 
 
      consulta.setOnClickListener(new View.OnClickListener() {
@@ -74,10 +80,10 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
      });
 
     }
-    @Override
-    public void onBackPressed() {
+   // @Override
+    /*public void onBackPressed() {
         moveTaskToBack(true);
-    }
+    }*/
 
     /**
      * Manipulates the map once available.
@@ -179,7 +185,7 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
 
 
     }
-    public boolean onCreateOptionsMenu(Menu menu){
+    /*public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
@@ -208,7 +214,7 @@ public class Maps extends ActionBarActivity implements OnMapReadyCallback, Googl
 
         return super.onOptionsItemSelected(item);
     }
-
+*/
 //aqui iria la consulta
 
 
