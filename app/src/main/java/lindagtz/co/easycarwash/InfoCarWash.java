@@ -27,7 +27,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class InfoCarWash extends NavDrawer {
+public class InfoCarWash extends AppCompatActivity {
 TextView direccion, telefono, horario, servicio, nombre;
 String id_auto,id_user;
     Button SolicitarSer;
@@ -66,7 +66,7 @@ String id_auto,id_user;
                 }
         );
 
-onStart();
+
 
     }
 

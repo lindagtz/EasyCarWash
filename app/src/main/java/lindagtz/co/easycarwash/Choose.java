@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
-public class Choose extends NavDrawer {
+public class Choose extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

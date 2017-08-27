@@ -3,7 +3,7 @@
     <color name="window_background">#FFF5F5F5</color>
     <color name="primaryColor">#346D7D</color>
     <color name="primaryDarkColor">#1F515F</color>
-    <color name="accentColor">#03A9F4</color>
+    <color name="accentColor">#03a9f4</color>
     <color name="colorPrimary">#1790c9</color>
     <color name="colorPrimaryDark">#ee777fb3</color>
     <color name="colorAccent">#9f51ba06</color>

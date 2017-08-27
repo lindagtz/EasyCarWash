@@ -20,6 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import android.Manifest;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,7 +47,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class Maps extends NavDrawer implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
+public class Maps extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
     private GoogleMap mMap;
     private Marker marcador;
     Button consulta;

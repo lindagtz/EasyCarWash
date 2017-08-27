@@ -210,7 +210,7 @@ public class Login extends AppCompatActivity {
                 use sharedPreferences of Android. and logout button to clear sharedPreferences.
                  */
 
-                Intent intent = new Intent(Login.this,Welcome.class);
+                    Intent intent = new Intent(Login.this,NaviDrawer.class);
                 startActivity(intent);
                 Login.this.finish();
 
