@@ -6,5 +6,10 @@
     <color name="accentColor">#03a9f4</color>
     <color name="colorPrimary">#1790c9</color>
     <color name="colorPrimaryDark">#ee777fb3</color>
-    <color name="colorAccent">#9f51ba06</color>
+    <color name="colorAccent">#a63cf4eb</color>
+    <color name="start">#434e9a</color>
+    <color name="end">#B3E5FC</color>
+
+
+
 </resources>

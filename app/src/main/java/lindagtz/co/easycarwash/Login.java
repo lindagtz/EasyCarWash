@@ -81,7 +81,7 @@ public class Login extends AppCompatActivity {
 
 
             Toast.makeText(Login.this, "Iniciando sesión...", Toast.LENGTH_LONG).show();
-
+//validacion del correo electronico en login
             if(Patterns.EMAIL_ADDRESS.matcher(emaili).matches()==false){
             inpEmail.setError("Correo inválido");
             email=false;
