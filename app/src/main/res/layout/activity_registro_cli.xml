@@ -57,6 +57,28 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="30dp"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:background="#0288D1"
+        android:id="@+id/edNamec"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignStart="@+id/edPasswordc" />
+
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:background="#0288D1"
+        android:id="@+id/edDireccionc"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/inpemail" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
         android:inputType="textPassword"
         android:ems="10"
         android:background="#0288D1"
@@ -106,16 +128,7 @@
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/textView7" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:background="#0288D1"
-        android:id="@+id/edNamec"
-        android:layout_alignBaseline="@+id/textView4"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_alignStart="@+id/edPasswordc" />
+
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -123,7 +136,7 @@
         android:id="@+id/inpemail"
         android:textColorHint="@color/cast_expanded_controller_text_color"
         android:layout_alignTop="@+id/textView5"
-        android:hint="Email"
+        android:hint="email@email.com"
         android:layout_alignStart="@+id/edNamec">
 
 
@@ -139,14 +152,6 @@
             android:layout_alignStart="@+id/edNamec" />
     </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:background="#0288D1"
-        android:id="@+id/edDireccionc"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/inpemail" />
+
 
 </RelativeLayout>

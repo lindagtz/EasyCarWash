@@ -65,7 +65,7 @@ Log.i("ss",email.getText().toString());
                     Log.i("so",emaail);
 
 
-                } if(Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()==false){
+                } else if(Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()==false){
                     inputEmail.setError("Correo inválido");
                     Inpmail=false;
                     Log.i("ss",email.getText().toString());

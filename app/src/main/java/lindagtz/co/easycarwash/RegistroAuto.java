@@ -77,6 +77,8 @@ public class RegistroAuto extends FragmentActivity implements OnMapReadyCallback
         firstname = (EditText) findViewById(R.id.txtfirstnameA);
         lastname = (EditText) findViewById(R.id.txtfirstnameA);
         btnRegisAuto = (Button) findViewById(R.id.btnRegisAuto);
+        username.requestFocus();
+
 
         btnRegisAuto.setOnClickListener(new View.OnClickListener() {
             @Override
