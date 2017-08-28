@@ -113,9 +113,9 @@ String id_auto,id_user;
         protected void onPostExecute(String result) {
             try {
                 JSONArray ja = new JSONArray(result);
-
+//para mostrar los datos del autolavado esta en un arreglo json
                 //te.setText(ja.getString(2));
-                nombre.setText("Autolavado "+ja.getString(0));
+                nombre.setText("*Autolavado "+ja.getString(0)+"*");
                 direccion.setText(ja.getString(1));
                 telefono.setText(ja.getString(2));
                 horario.setText(ja.getString(3));

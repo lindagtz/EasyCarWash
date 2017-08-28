@@ -263,7 +263,7 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
 
                     mMap.addMarker(new MarkerOptions()
                             .icon(BitmapDescriptorFactory.fromResource(R.mipmap.carro))
-                            .title(jsonObj.getString("nombre_autolavado")+"\n"+jsonObj.getString("descripcion"))
+                            .title("*"+jsonObj.getString("nombre_autolavado")+"*\n"+jsonObj.getString("descripcion"))
                             .snippet(jsonObj.getString("id_autolavado"))
                             .position(new LatLng(
                                     jsonObj.getDouble("latitud"),
