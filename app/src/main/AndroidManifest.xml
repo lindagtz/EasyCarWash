@@ -38,7 +38,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Maps" />
+        <activity android:name=".Maps"
+            android:theme="@style/MenuTheme"/>
         <activity android:name=".Splashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

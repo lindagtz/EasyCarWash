@@ -186,7 +186,7 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
 
 
     }
-    /*public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
@@ -215,7 +215,7 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
 
         return super.onOptionsItemSelected(item);
     }
-*/
+
 //aqui iria la consulta
 
 
