@@ -2,9 +2,11 @@ package lindagtz.co.easycarwash;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +31,8 @@ public class RegistroCliente extends AppCompatActivity {
     EditText name, email, password, direccion;
     TextView auth_id;
     Button regCancelar, regGuardar;
+    TextInputLayout inputEmail;
+    boolean Inpmail=false;
 
     @Override
 
@@ -43,16 +47,40 @@ public class RegistroCliente extends AppCompatActivity {
         direccion = (EditText) findViewById(R.id.edDireccionc);
         auth_id=(TextView) findViewById(R.id.txtperm);
         regGuardar = (Button) findViewById(R.id.regGuardar);
+        inputEmail=(TextInputLayout)findViewById(R.id.inpemail);
+
+        final String emaail = email.getText().toString();
+        final String namee = name.getText().toString();
+        final String pass = password.getText().toString();
+        final String dir = direccion.getText().toString();
+
+
 
         regGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(name.getText().toString().isEmpty() || password.getText().toString().isEmpty() || email.getText().toString().isEmpty() || direccion.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Por favor, llene todos los datos", Toast.LENGTH_LONG).show();
+Log.i("ss",email.getText().toString());
+                    Log.i("so",emaail);
 
-                //new RegistroCliente.CargarDatos().execute("http://easycarwash.hol.es/registrocli.php?name=" + name.getText().toString() + "&email=" + email.getText().toString()+ "&password=" + password.getText().toString()+ "&direccion=" + direccion.getText().toString()+ "&telefono=" + telefono.getText().toString()+ "&tipo=" + tipo.getText().toString()+ "&color=" + color.getText().toString()+ "&marca=" + marca.getText().toString() + "&auth_id=" + auth_id.getText().toString());
-                new RegistroCliente.CargarDatos().execute("http://easycarwash.hol.es/registrocli.php?name=" +
-                        name.getText().toString() + "&email=" + email.getText().toString()+ "&password=" +
-                        password.getText().toString()+ "&direccion=" +
-                        direccion.getText().toString()+"&auth_id=" + auth_id.getText().toString());
+
+                } if(Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()==false){
+                    inputEmail.setError("Correo inválido");
+                    Inpmail=false;
+                    Log.i("ss",email.getText().toString());
+                    Log.i("so",emaail);
+
+                }else {
+                    Inpmail = true;
+                    inputEmail.setError(null);
+
+                    //new RegistroCliente.CargarDatos().execute("http://easycarwash.hol.es/registrocli.php?name=" + name.getText().toString() + "&email=" + email.getText().toString()+ "&password=" + password.getText().toString()+ "&direccion=" + direccion.getText().toString()+ "&telefono=" + telefono.getText().toString()+ "&tipo=" + tipo.getText().toString()+ "&color=" + color.getText().toString()+ "&marca=" + marca.getText().toString() + "&auth_id=" + auth_id.getText().toString());
+                    new RegistroCliente.CargarDatos().execute("http://easycarwash.hol.es/registrocli.php?name=" +
+                            name.getText().toString() + "&email=" + email.getText().toString() + "&password=" +
+                            password.getText().toString() + "&direccion=" +
+                            direccion.getText().toString() + "&auth_id=" + auth_id.getText().toString());
+                }
 
             }
         });

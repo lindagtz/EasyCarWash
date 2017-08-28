@@ -249,7 +249,7 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
                 for (int i = 0; i < jsonArray.length(); i++) {
                     // Create a marker for each carwashhh in the JSON data.
                     JSONObject jsonObj = jsonArray.getJSONObject(i);
-                    Objetos obj= new Objetos(jsonObj.getString("id_autolavado"), jsonObj.getString("nombre"), jsonObj.getString("descripcion"),
+                    Objetos obj= new Objetos(jsonObj.getString("id_autolavado"), jsonObj.getString("nombre_autolavado"), jsonObj.getString("descripcion"),
                             jsonObj.getDouble("latitud"), jsonObj.getDouble("longitud"));
                     descrip=obj.getDescripcion();
                     nombr=obj.getNombre();
@@ -263,7 +263,7 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
 
                     mMap.addMarker(new MarkerOptions()
                             .icon(BitmapDescriptorFactory.fromResource(R.mipmap.carro))
-                            .title(jsonObj.getString("nombre")+"\n"+jsonObj.getString("descripcion"))
+                            .title(jsonObj.getString("nombre_autolavado")+"\n"+jsonObj.getString("descripcion"))
                             .snippet(jsonObj.getString("id_autolavado"))
                             .position(new LatLng(
                                     jsonObj.getDouble("latitud"),
@@ -295,16 +295,16 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
     public class Objetos {
 
         private String id_autolavado;
-        private String nombre;
+        private String nombre_autolavado;
         private String descripcion;
         private double latitud;
         private double longitud;
 
 
-        public Objetos(String id_autolavado, String nombre, String descripcion, double latitud, double longitud) {
+        public Objetos(String id_autolavado, String nombre_autolavado, String descripcion, double latitud, double longitud) {
             super();
             this.id_autolavado = id_autolavado;
-            this.nombre = nombre;
+            this.nombre_autolavado = nombre_autolavado;
             this.descripcion = descripcion;
             this.latitud = latitud;
             this.longitud = longitud;
@@ -319,12 +319,12 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
             return id_autolavado;
         }
 
-        public void setNombre(String nombre) {
-            this.nombre = nombre;
+        public void setNombre(String nombre_autolavado) {
+            this.nombre_autolavado = nombre_autolavado;
         }
 
         public String getNombre() {
-            return nombre;
+            return nombre_autolavado;
         }
 
         public void setDescripcion(String descripcion) {
@@ -358,7 +358,7 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
         InputStream is = null;
         // Only display the first 500 characters of the retrieved
         // web page content.
-        int len = 500;
+        int len = 1500;
 
         try {
             URL url = new URL(myurl);
