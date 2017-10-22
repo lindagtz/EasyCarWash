@@ -2,6 +2,7 @@ package lindagtz.co.easycarwash;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -60,13 +61,15 @@ public class RegistroCliente extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(name.getText().toString().isEmpty() || password.getText().toString().isEmpty() || email.getText().toString().isEmpty() || direccion.getText().toString().isEmpty()){
-                    Toast.makeText(getApplicationContext(), "Por favor, llene todos los datos", Toast.LENGTH_LONG).show();
-Log.i("ss",email.getText().toString());
+                    Snackbar.make(v, "Por favor llene todos los datos", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();Log.i("ss",email.getText().toString());
                     Log.i("so",emaail);
 
 
                 } else if(Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()==false){
-                    inputEmail.setError("Correo inválido");
+                    Snackbar.make(v, "Correo inválido", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    //inputEmail.setError("Correo inválido");
                     Inpmail=false;
                     Log.i("ss",email.getText().toString());
                     Log.i("so",emaail);
@@ -114,7 +117,8 @@ Log.i("ss",email.getText().toString());
         @Override
         protected void onPostExecute(String result) {
 
-            Toast.makeText(getApplicationContext(), "Se almacenaron los datos correctamente", Toast.LENGTH_LONG).show();
+            Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Registro exitoso!", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
             Intent Login= new Intent(RegistroCliente.this, Login.class);
             startActivity(Login);
         }

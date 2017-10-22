@@ -66,18 +66,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:text="Iniciar sesión"
-        android:layout_width="325dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="44dp"
-        android:id="@+id/btnLogin"
-        android:background="#90CAF9"
-        android:textColor="#ffff"
-        android:textSize="18sp"
-        android:layout_above="@+id/Registralink"
-        android:layout_alignStart="@+id/inpEmail" />
-
     <android.support.design.widget.TextInputLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -120,6 +108,18 @@
         android:fontFamily="cursive"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Iniciar sesión"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnLogin"
+        android:background="@drawable/btn_redondo"
+        android:textColor="#ffff"
+        android:textSize="18sp"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/inpPass"
+        android:layout_alignStart="@+id/inpEmail" />
 
 
 </RelativeLayout>

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@drawable/login_background">
+    android:background="@drawable/material_background2s"
+    android:weightSum="1">
 
     <ImageView
         android:id="@+id/imageView1"
@@ -14,18 +15,19 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="77dp"
         android:orientation="vertical"
         android:weightSum="1">
 
         <TextView
             android:id="@+id/tv_locality"
-            android:layout_width="119dp"
-            android:layout_height="match_parent"
+            android:layout_width="176dp"
+            android:layout_height="68dp"
             android:text=" Title"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:fontFamily="sans-serif"
-            android:textColor="#ffff" />
+            android:textColor="@color/cast_expanded_controller_background_color"
+            android:paddingLeft="20dp" />
 
         <TextView
             android:id="@+id/tv_snippet"
@@ -39,13 +41,11 @@
 
     </LinearLayout>
 
-    <Button
-        android:text="Ver más"
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/infoButton"
-        android:background="#90CAF9"
-        android:fontFamily="cursive"
+        app:srcCompat="@drawable/flechin"
+        android:id="@+id/imageView"
         android:layout_weight="1" />
 
 

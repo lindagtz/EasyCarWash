@@ -27,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -80,9 +81,11 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
          }
      });
 
+
+
     }
-   // @Override
-    /*public void onBackPressed() {
+ ///*  @Override
+   /* public void onBackPressed() {
         moveTaskToBack(true);
     }*/
 
@@ -358,7 +361,7 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
         InputStream is = null;
         // Only display the first 500 characters of the retrieved
         // web page content.
-        int len = 1500;
+        int len = 2500;
 
         try {
             URL url = new URL(myurl);

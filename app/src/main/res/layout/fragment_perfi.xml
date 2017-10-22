@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,13 +10,24 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
+        android:text="Nombre:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView12"
+        android:layout_marginEnd="42dp"
+        android:layout_alignBaseline="@+id/usnombre"
+        android:layout_alignBottom="@+id/usnombre"
+        android:layout_toStartOf="@+id/usnombre"
+        android:textSize="18sp" />
+
+    <TextView
         android:text="Mi perfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="163dp"
         android:id="@+id/textView10"
         android:textColor="@color/accentColor"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -23,10 +35,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
         android:ems="10"
-        android:layout_below="@+id/textView10"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp"
-        android:id="@+id/edPer" />
+        android:id="@+id/usnombre"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/textView10" />
+
+    <TextView
+        android:text="Dirección:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/usnombre"
+        android:layout_alignStart="@+id/textView12"
+        android:layout_marginTop="35dp"
+        android:id="@+id/textView21"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/usnombre"
+        android:layout_alignStart="@+id/usnombre"
+        android:layout_marginTop="20dp"
+        android:id="@+id/usdirec" />
+
+    <TextView
+        android:text="Teléfono:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:id="@+id/textView22"
+        android:layout_below="@+id/usdirec"
+        android:layout_alignStart="@+id/textView21"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/ustelef"
+        android:layout_alignBaseline="@+id/textView22"
+        android:layout_alignBottom="@+id/textView22"
+        android:layout_alignStart="@+id/usdirec" />
+
 </RelativeLayout>

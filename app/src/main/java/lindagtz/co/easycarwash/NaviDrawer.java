@@ -120,7 +120,7 @@ public class NaviDrawer extends AppCompatActivity {
 
                             Servicios servicios=new Servicios();
                             fragmentManager.beginTransaction().replace(R.id.content_navi_drawer, servicios).commit();
-                        } else if (id == R.id.nav_log_out) {
+                        } else if (id == R.id.nav_cerrar) {
                             startActivity(new Intent(getApplicationContext(), Login.class));
 
                         }

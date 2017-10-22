@@ -7,13 +7,27 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:text="Hola!!, Qué gusto volverte a ver"
-        android:layout_width="wrap_content"
+        android:text="Hola!!"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="105dp"
         android:id="@+id/textView13"
-        android:textSize="18sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textSize="36sp"
+        android:textColor="@color/cast_expanded_controller_background_color"
+        android:textStyle="normal|italic"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:text="Qué gusto verte de nuevo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView13"
+        android:layout_marginTop="36dp"
+        android:id="@+id/textView23"
+        android:textSize="24sp"
+        android:textStyle="normal|italic"
+        android:textColor="@color/accentColor"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_horizontal" />
 
 </RelativeLayout>

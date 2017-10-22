@@ -1,23 +1,18 @@
 package lindagtz.co.easycarwash;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,7 +24,9 @@ import java.net.URL;
 
 public class InfoCarWash extends AppCompatActivity {
 TextView direccion, telefono, horario, servicio, nombre;
-String id_auto,id_user;
+String id_auto,id_user, tel;
+    public String telef=null;
+
     Button SolicitarSer;
     protected static TextView text_v;
     protected static RatingBar rating_b;
@@ -47,24 +44,20 @@ String id_auto,id_user;
         servicio=(TextView)findViewById(R.id.txtServic);
         nombre=(TextView)findViewById(R.id.txtNombreAu);
         SolicitarSer=(Button)findViewById(R.id.btnSolicitar);
-        rating_b = (RatingBar) findViewById(R.id.ratingBar);
-        text_v = (TextView)findViewById(R.id.txtEv);
+        //rating_b = (RatingBar) findViewById(R.id.ratingBar);
+        text_v = (TextView)findViewById(R.id.txtEve);
 
 
 
 
-        listenerForRatingBar();
+        //listenerForRatingBar();
+        SolicitarSer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                enviarTelef();
+            }
+        });
 
-        SolicitarSer.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(InfoCarWash.this,
-                                String.valueOf(rating_b.getRating()),
-                                Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );
 
 
 
@@ -72,7 +65,8 @@ String id_auto,id_user;
 
 
 
-    private void listenerForRatingBar() {
+
+   /* private void listenerForRatingBar() {
 
 
         rating_b.setOnRatingBarChangeListener(
@@ -84,7 +78,7 @@ String id_auto,id_user;
                 }
         );
     }
-
+*/
     @Override
     protected void onStart()
     {
@@ -117,6 +111,7 @@ String id_auto,id_user;
                 //te.setText(ja.getString(2));
                 nombre.setText("*Autolavado "+ja.getString(0)+"*");
                 direccion.setText(ja.getString(1));
+                telef=ja.getString(2);
                 telefono.setText(ja.getString(2));
                 horario.setText(ja.getString(3));
 
@@ -125,8 +120,18 @@ String id_auto,id_user;
                 e.printStackTrace();
             }
 
+            Log.i("telef",telef);
+
+
         }
 
+
+    }
+
+    private void enviarTelef() {
+        Intent SolicitaServic=new Intent(this, SolicitaServicio.class);
+        SolicitaServic.putExtra("telefono", telef);
+        startActivity(SolicitaServic);
 
     }
 
@@ -137,7 +142,7 @@ String id_auto,id_user;
         InputStream is = null;
         // Only display the first 500 characters of the retrieved
         // web page content.
-        int len = 500;
+        int len = 1500;
 
         try {
             URL url = new URL(myurl);
@@ -173,4 +178,9 @@ String id_auto,id_user;
         reader.read(buffer);
         return new String(buffer);
     }
+
+
+
+
+
 }

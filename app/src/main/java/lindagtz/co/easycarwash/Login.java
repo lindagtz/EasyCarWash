@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -27,6 +29,7 @@ public class Login extends AppCompatActivity {
     TextView registrar;
     TextInputLayout inpEmail, inpPass;
     boolean email=false;
+
     private EditText editTextEmail;
     private EditText editTextPassword;
 
@@ -80,10 +83,17 @@ public class Login extends AppCompatActivity {
 
 
 
-            Toast.makeText(Login.this, "Iniciando sesión...", Toast.LENGTH_LONG).show();
+           // Toast.makeText(Login.this, "Verificando...", Toast.LENGTH_LONG).show();
 //validacion del correo electronico en login
-            if(Patterns.EMAIL_ADDRESS.matcher(emaili).matches()==false){
-            inpEmail.setError("Correo inválido");
+
+        if(emaili.equalsIgnoreCase("") || password.equalsIgnoreCase("")){
+            Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Favor de ingresar todos los datos", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
+            else if(Patterns.EMAIL_ADDRESS.matcher(emaili).matches()==false){
+                Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Correo inválido", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            //inpEmail.setError("Correo inválido");
             email=false;
             }else {
                 email = true;
@@ -172,11 +182,12 @@ public class Login extends AppCompatActivity {
                     InputStream input = conn.getInputStream();
                     BufferedReader reader = new BufferedReader(new InputStreamReader(input));
                     StringBuilder result = new StringBuilder();
-                    String line;
 
+                    String line;
                     while ((line = reader.readLine()) != null) {
                         result.append(line);
                     }
+                    Log.i("data",result.toString());
 
                     // Pass data to onPostExecute method
                     return(result.toString());
@@ -186,9 +197,10 @@ public class Login extends AppCompatActivity {
                     return("unsuccessful");
                 }
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 return "exception";
+
             } finally {
                 conn.disconnect();
             }
@@ -201,35 +213,43 @@ public class Login extends AppCompatActivity {
         protected void onPostExecute(String result) {
 
             //this method will be running on UI thread
-
+            String part1="";
+            String part2="";
             pdLoading.dismiss();
+            String[] parts = result.split("-");
+             part1 = parts[0]; // true/false
 
-            if(result.equalsIgnoreCase("true"))
+            Log.i("part1",part1.toString());
+            Log.i("result",result.toString());
+
+            if(part1.equalsIgnoreCase("true"))
             {
                 /* Here launching another activity when login successful. If you persist login state
                 use sharedPreferences of Android. and logout button to clear sharedPreferences.
                  */
-
-                    Intent intent = new Intent(Login.this,NaviDrawer.class);
+                    Log.i("id:",part2);
+                Intent intent = new Intent(Login.this,NaviDrawer.class);
+                part2 = parts[1]; // id
+                intent.putExtra("id_user",part2);
                 startActivity(intent);
                 Login.this.finish();
 
-             }else if(result.equalsIgnoreCase(null)){
-                Toast.makeText(Login.this, "Por favor, ingrese sus datos", Toast.LENGTH_LONG).show();
+             }else if(part1.equalsIgnoreCase(null)){
+                            Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Por favor, ingrese sus datos", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+               /// Toast.makeText(Login.this, "Por favor, ingrese sus datos", Toast.LENGTH_LONG).show();
 
             }
 
-
-
-            else if (result.equalsIgnoreCase("false")){
+            else if (part1.equalsIgnoreCase("false")){
 
                 // If username and password does not match display a error message
-                Toast.makeText(Login.this, "Por favor, ingrese los datos correctos", Toast.LENGTH_LONG).show();
+                Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Por favor, ingrese los datos correctos", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            } else {
 
-            } else if (result.equalsIgnoreCase("exception") || result.equalsIgnoreCase("unsuccessful")) {
-
-                Toast.makeText(Login.this, "Oops! Problemas en la conexión.", Toast.LENGTH_LONG).show();
-
+                Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Oops, problemas en la conexión!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         }
 

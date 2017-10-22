@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -12,7 +13,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_more_info"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -20,7 +21,6 @@
     tools:context="lindagtz.co.easycarwash.InfoCarWash">
 
     <TextView
-        android:text="Pedro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView4"
@@ -75,19 +75,11 @@
         android:textSize="20sp"
         android:textStyle="normal|bold" />
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:srcCompat="@drawable/user"
-        android:id="@+id/imageView4"
-        android:layout_below="@+id/textView14"
-        android:layout_centerHorizontal="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView17"
-        android:layout_toEndOf="@+id/txtEv"
+        android:layout_toEndOf="@+id/txtEve"
         android:layout_marginStart="28dp"
         android:textColor="#7986CB"
         android:id="@+id/txtAddress"
@@ -98,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView18"
-        android:layout_toEndOf="@+id/txtEv"
+        android:layout_toEndOf="@+id/txtEve"
         android:layout_marginStart="16dp"
         android:id="@+id/txtTel"
         android:textSize="18sp"
@@ -123,7 +115,6 @@
         android:id="@+id/txtServic" />
 
     <TextView
-        android:text="WASHERS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
@@ -139,7 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="59dp"
-        android:id="@+id/txtEv"
+        android:id="@+id/txtEve"
         android:textColorLink="@android:color/holo_blue_dark"
         android:textColor="@android:color/holo_blue_dark"
         android:height="20dp"
@@ -166,17 +157,18 @@
         android:id="@+id/btnSolicitar"
         android:textColor="@color/colorPrimary"
         android:layout_marginTop="100dp"
-        android:layout_below="@+id/txtEv"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/txtEve"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_redondo" />
 
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ratingBar"
+        android:id="@+id/ratingBarr"
         android:numStars="5"
         android:rating="2"
         android:stepSize="1"
-        android:layout_below="@+id/txtEv"
+        android:layout_below="@+id/txtEve"
         android:layout_alignParentStart="true"
         android:layout_marginTop="18dp"
         android:layout_toEndOf="@+id/textView19" />
@@ -191,6 +183,15 @@
         android:paddingStart="20dp"
         android:layout_alignParentTop="true"
         android:gravity="center_vertical|center_horizontal|center" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/carwashi"
+        android:id="@+id/imageView4"
+        android:layout_alignTop="@+id/textView14"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp" />
 
 </RelativeLayout>
 </ScrollView>
