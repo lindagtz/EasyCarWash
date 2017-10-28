@@ -2,8 +2,14 @@ package lindagtz.co.easycarwash;
 
 import android.*;
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,13 +25,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
-public class SolicitaServicio extends AppCompatActivity {
-String telef;
-    TextView telefono;
+public class SolicitaServicio extends AppCompatActivity implements LocationListener {
+    protected LocationManager locationManager;
+    String telef;
+    TextView telefono, coorden, direccion;
     Button btnEnviar, btnCanc;
-    EditText texto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +47,8 @@ String telef;
         Log.i("telefonoo", telef);
 
         telefono = (TextView) findViewById(R.id.txtTelefAutolavado);
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,51 +64,76 @@ String telef;
             }
         });
 
+
+
         telefono.setText(telef);
 
-        //Comenzamos con los SMS
-        if (ContextCompat.checkSelfPermission(SolicitaServicio.this,
-                Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
 
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(SolicitaServicio.this,
-                    Manifest.permission.SEND_SMS)) {
-                ActivityCompat.requestPermissions(SolicitaServicio.this,
-                        new String[]{Manifest.permission.SEND_SMS}, 1);
-
-            } else {
-                ActivityCompat.requestPermissions(SolicitaServicio.this,
-                        new String[]{Manifest.permission.SEND_SMS}, 1);
-
-            }
-
-        } else {
-            //nada
-
-        }
 
         btnEnviar=(Button)findViewById(R.id.btnEnv);
         btnCanc=(Button)findViewById(R.id.btncanc);
         telefono=(TextView)findViewById(R.id.txtTelefAutolavado);
-        texto=(EditText)findViewById(R.id.textoMsg);
 
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
+        } else {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 1000, this);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1000, this);
+
+        }
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String numer=telefono.getText().toString();
-                String text=texto.getText().toString();
-            try {
-                SmsManager smsManager= SmsManager.getDefault();
-                smsManager.sendTextMessage(numer, null, text, null, null);
-                Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Mensaje enviado!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                telefono.setText("");
-                texto.setText("");
-            }catch (Exception e) {
-                Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Oops, falló!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
 
-            }
+
+                try {
+
+                    TextView co = (TextView) findViewById(R.id.txtcoordenadas);
+                    TextView di = (TextView) findViewById(R.id.txtdireccion);
+                    String coord = co.getText().toString();
+                    String direcc = di.getText().toString();
+
+                    //Comenzamos con los SMS
+                    if (ContextCompat.checkSelfPermission(SolicitaServicio.this,
+                            Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+
+
+                        if (ActivityCompat.shouldShowRequestPermissionRationale(SolicitaServicio.this,
+                                Manifest.permission.SEND_SMS)) {
+                            ActivityCompat.requestPermissions(SolicitaServicio.this,
+                                    new String[]{Manifest.permission.SEND_SMS}, 1);
+
+                        } else {
+                            ActivityCompat.requestPermissions(SolicitaServicio.this,
+                                    new String[]{Manifest.permission.SEND_SMS}, 1);
+
+                        }
+
+                    } else {
+                        //nada
+
+                        String numer = telefono.getText().toString();
+
+                        String texto = coord + " " + direcc;
+                       SmsManager.getDefault().sendTextMessage(numer, null, direcc + "\n" +
+                                coord, null, null);
+                        Log.i("texto: ", texto);
+                    }
+                    Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Mensaje enviado!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+             /*   telefono.setText("");
+                coorden.setText("");
+                    direccion.setText("");*/
+                } catch (Exception e) {
+                    Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Oops, falló!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    e.printStackTrace();
+
+
+                }
+
 
             }
         });
@@ -110,33 +148,71 @@ String telef;
 
 
     }
-        public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
+      /*  public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
             switch (requestCode){
                 case 1:{
                     if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
                         if(ContextCompat.checkSelfPermission(SolicitaServicio.this,
                                 Manifest.permission.SEND_SMS)== PackageManager.PERMISSION_GRANTED){
                             Toast.makeText(this, "sii", Toast.LENGTH_SHORT).show();
+                            Log.i("si","si");
                         }
 
                     }else{
                         Toast.makeText(this, "NOO", Toast.LENGTH_SHORT).show();
+                        Log.i("no","no");
 
                     }
                     return;
                 }
             }
         }
+*/
 
-
-
-
-
-
-
-
-
+    @Override
+    public void onLocationChanged(Location location) {
+        coorden=(TextView) findViewById(R.id.txtcoordenadas);
+        direccion=(TextView) findViewById(R.id.txtdireccion);
+        coorden.setText("http://maps.google.com/?q="+ location.getLatitude() + "," + location.getLongitude());
+        this.setLocation(location);
     }
+
+    private void setLocation(Location location) {
+        //Obtener la direccion de la calle a partir de la latitud y la longitud
+        if (location.getLatitude() != 0.0 && location.getLongitude() != 0.0) {
+            try {
+                Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+                List<Address> list = geocoder.getFromLocation(
+                        location.getLatitude(), location.getLongitude(), 1);
+                if (!list.isEmpty()) {
+                    Address DirCalle = list.get(0);
+                    direccion.setText("Mi direccion es: \n"
+                            + DirCalle.getAddressLine(0));
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+            Log.d("Latitude","status");
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+        Log.d("Latitude","enable");
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+        Log.d("Latitude","disable");
+    }
+}
 
 
 

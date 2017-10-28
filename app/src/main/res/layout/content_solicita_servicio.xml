@@ -56,27 +56,6 @@
         android:layout_marginTop="30dp"
         android:id="@+id/textView29" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:layout_below="@+id/textView29"
-        android:layout_marginTop="13dp"
-        android:id="@+id/textoMsg"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/textView25" />
-
-    <Button
-        android:text="Enviar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textoMsg"
-        android:layout_alignStart="@+id/textView26"
-        android:layout_marginTop="13dp"
-        android:id="@+id/btnEnv"
-        android:background="@drawable/btn_redondo" />
-
     <Button
         android:text="Cancelar"
         android:layout_width="wrap_content"
@@ -85,4 +64,32 @@
         android:layout_alignEnd="@+id/textView26"
         android:id="@+id/btncanc"
         android:background="@drawable/btn_redondo" />
+
+    <TextView
+        android:text="Cargando..."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView29"
+        android:layout_alignStart="@+id/textView24"
+        android:layout_marginTop="33dp"
+        android:id="@+id/txtcoordenadas" />
+
+    <TextView
+        android:text="Cargando..."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtcoordenadas"
+        android:layout_alignEnd="@+id/txtcoordenadas"
+        android:layout_marginTop="44dp"
+        android:id="@+id/txtdireccion" />
+
+    <Button
+        android:text="Enviar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:id="@+id/btnEnv"
+        android:background="@drawable/btn_redondo"
+        android:layout_below="@+id/txtdireccion"
+        android:layout_alignStart="@+id/textView26" />
 </RelativeLayout>

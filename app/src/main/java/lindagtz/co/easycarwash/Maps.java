@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -78,6 +79,8 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
          @Override
          public void onClick(View v) {
              new ConsultarDatos().execute("http://easycarwash.hol.es/consulta.php");
+             Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Pulsa en un autolavado para ver mas detalles!", Snackbar.LENGTH_LONG)
+                     .setAction("Action", null).show();
          }
      });
 
