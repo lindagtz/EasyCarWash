@@ -1,5 +1,5 @@
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
@@ -7,21 +7,36 @@
     android:orientation="vertical"
     android:id="@+id/idLayout">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:id="@+id/btnMaps"
-        android:elevation="3dp"
-        android:text="Mostrar" />
-
     <fragment
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:id="@+id/map"
         android:layout_width="375dp"
-        android:layout_height="429dp"
+        android:layout_height="487dp"
         tools:context="lindagtz.co.easycarwash.Maps"
         app:layout_collapseParallaxMultiplier="0.3"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btnMaps" />
+
+    <Button
+        android:layout_width="165dp"
+        android:layout_height="72dp"
+        android:id="@+id/btnMaps"
+        android:elevation="3dp"
+        android:text="Mostrar"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/button2"
+        tools:targetApi="lollipop"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:text="@string/button"
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/map"
+        android:layout_alignParentEnd="true" />
 
 
-</LinearLayout>
+</RelativeLayout>

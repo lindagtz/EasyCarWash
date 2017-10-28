@@ -12,15 +12,6 @@
     android:orientation="vertical"
     android:id="@+id/idLayout">
 
-    <fragment
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:id="@+id/map"
-        android:layout_width="579dp"
-        android:layout_height="291dp"
-        tools:context="lindagtz.co.easycarwash.Maps"
-        app:layout_collapseParallaxMultiplier="0.3"
-        android:layout_centerHorizontal="true"/>
-
 
 </LinearLayout>
 </ScrollView>

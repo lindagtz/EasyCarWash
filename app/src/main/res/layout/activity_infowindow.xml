@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@drawable/material_background2s"
+    android:background="@drawable/login_background"
     android:weightSum="1">
 
     <ImageView

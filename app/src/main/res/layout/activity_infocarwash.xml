@@ -37,11 +37,11 @@
         android:layout_below="@+id/textView18"
         android:layout_marginTop="17dp"
         android:id="@+id/textView19"
-        android:textSize="18sp"
-        android:paddingTop="15dp" />
+        android:textSize="20sp"
+        android:paddingTop="15dp"
+        android:textStyle="normal|bold" />
 
     <TextView
-        android:text="Servicios:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView19"
@@ -59,8 +59,9 @@
         android:id="@+id/textView18"
         android:layout_below="@+id/textView17"
         android:layout_alignEnd="@+id/txtTel"
-        android:textSize="18sp"
-        android:layout_alignParentStart="true" />
+        android:textSize="20sp"
+        android:layout_alignParentStart="true"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:text="Información general"
@@ -79,11 +80,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView17"
-        android:layout_toEndOf="@+id/txtEve"
-        android:layout_marginStart="28dp"
+        android:layout_toEndOf="@+id/textView18"
         android:textColor="#7986CB"
         android:id="@+id/txtAddress"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:layout_marginTop="10dp" />
 
     <TextView
@@ -93,7 +93,7 @@
         android:layout_toEndOf="@+id/txtEve"
         android:layout_marginStart="16dp"
         android:id="@+id/txtTel"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="#7986CB" />
 
     <TextView
@@ -102,7 +102,7 @@
         android:layout_above="@+id/textView20"
         android:textColor="#7986CB"
         android:layout_alignStart="@+id/txtTel"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:id="@+id/txtHorario" />
 
     <TextView
@@ -129,7 +129,7 @@
         android:text="Evaluaciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="25dp"
         android:id="@+id/txtEve"
         android:textColorLink="@android:color/holo_blue_dark"
         android:textColor="@android:color/holo_blue_dark"
@@ -145,10 +145,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:id="@+id/textView17"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:layout_below="@+id/textView16"
         android:layout_alignParentStart="true"
-        android:paddingTop="10dp" />
+        android:paddingTop="10dp"
+        android:textStyle="normal|bold" />
 
     <Button
         android:text="Solicitar Servicio"
@@ -178,7 +179,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/txtNombreAu"
         android:textColor="@color/cast_libraries_material_featurehighlight_outer_highlight_default_color"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="normal|bold|italic"
         android:paddingStart="20dp"
         android:layout_alignParentTop="true"

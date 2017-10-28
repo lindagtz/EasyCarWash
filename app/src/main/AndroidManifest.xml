@@ -70,7 +70,8 @@
         <activity
             android:name=".SolicitaServicio"
             android:label="@string/title_activity_solicita_servicio"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".HomeActivity"></activity>
     </application>
 
 </manifest>
