@@ -35,7 +35,7 @@ import java.util.Map;
 public class SolicitaServicio extends AppCompatActivity implements LocationListener {
     protected LocationManager locationManager;
     String telef;
-    TextView telefono, coorden, direccion;
+    TextView telefono, coorden, direccion, txt1;
     Button btnEnviar, btnCanc;
 
     @Override
@@ -116,19 +116,21 @@ public class SolicitaServicio extends AppCompatActivity implements LocationListe
 
                         String numer = telefono.getText().toString();
 
-                        String texto = coord + " " + direcc;
+                        String texto = ":\n"+coord + "\n" + direcc;
                        SmsManager.getDefault().sendTextMessage(numer, null, direcc + "\n" +
                                 coord, null, null);
                         Log.i("texto: ", texto);
                     }
-                    Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Mensaje enviado!", Snackbar.LENGTH_LONG)
+                    Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Mensaje enviado, Por favor espere su confirmación (10 min aprox.)!", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
              /*   telefono.setText("");
                 coorden.setText("");
                     direccion.setText("");*/
                 } catch (Exception e) {
-                    Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Oops, falló!", Snackbar.LENGTH_LONG)
+                    Snackbar.make(getWindow().getDecorView().findViewById(android.R.id.content), "Oops, falló el envío!", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
+                    coorden.setText("");
+                    direccion.setText("");
                     e.printStackTrace();
 
 
@@ -186,7 +188,7 @@ public class SolicitaServicio extends AppCompatActivity implements LocationListe
                         location.getLatitude(), location.getLongitude(), 1);
                 if (!list.isEmpty()) {
                     Address DirCalle = list.get(0);
-                    direccion.setText("Mi direccion es: \n"
+                    direccion.setText("Solicitud de autolavado a domicilio en: \n"
                             + DirCalle.getAddressLine(0));
                 }
 

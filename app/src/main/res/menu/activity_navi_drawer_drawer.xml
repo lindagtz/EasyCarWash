@@ -16,10 +16,6 @@
             android:icon="@drawable/ic_map"
             android:title="Mapa" />
         <item
-            android:id="@+id/nav_serv"
-            android:icon="@drawable/ic_car"
-            android:title="Mis servicios" />
-        <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_info"
             android:title="Acerca de" />
@@ -31,10 +27,6 @@
                 android:id="@+id/nav_cerrar"
                 android:icon="@drawable/ic_logout"
                 android:title="Cerrar Sesión" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Quejas" />
         </menu>
     </item>
 

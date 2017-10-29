@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,28 +7,39 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:text="Hola!!"
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="105dp"
-        android:id="@+id/textView13"
-        android:textSize="36sp"
-        android:textColor="@color/cast_expanded_controller_background_color"
-        android:textStyle="normal|italic"
+        app:srcCompat="@drawable/welcomee"
+        android:id="@+id/imageView5"
+        android:layout_marginBottom="196dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Para comenzar, usa el menú de navegación!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView5"
+        android:id="@+id/textView30"
+        android:textColor="#4CAF50"
+        android:textSize="18sp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:gravity="center_horizontal" />
 
     <TextView
-        android:text="Qué gusto verte de nuevo"
-        android:layout_width="match_parent"
+        android:text="Explora el mapa para solicitar un servicio de autolavado a domiclilio o para seguir la ruta hasta el destino."
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView13"
-        android:layout_marginTop="36dp"
-        android:id="@+id/textView23"
-        android:textSize="24sp"
-        android:textStyle="normal|italic"
-        android:textColor="@color/accentColor"
-        android:layout_alignParentEnd="true"
-        android:gravity="center_horizontal" />
+        android:id="@+id/textView33"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="#00897B"
+        android:layout_below="@+id/textView30"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="28dp"
+        android:textSize="18sp" />
 
 </RelativeLayout>

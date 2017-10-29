@@ -31,7 +31,7 @@
         android:textStyle="normal|bold|italic" />
 
     <TextView
-        android:text="Ésta aplicación fue desarrollada por la alumna Linda Flor Gutiérrez de la UTTEC para la materia de Integradora."
+        android:text="Ésta aplicación fue desarrollada por la alumna Linda Flor Gutiérrez Sánchez de la Universidad Tecnológica de Tecámac para la materia de Integradora."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView28"

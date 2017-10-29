@@ -1,5 +1,5 @@
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
@@ -7,21 +7,29 @@
     android:orientation="vertical"
     android:id="@+id/idLayout">
 
-    <Button
-        android:text="Consultar autolavados"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnMaps"
-        android:fontFamily="sans-serif-condensed"
-        android:background="?android:attr/colorButtonNormal" />
-
     <fragment
-        android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:id="@+id/map"
         android:layout_width="375dp"
-        android:layout_height="464dp"
+        android:layout_height="487dp"
         tools:context="lindagtz.co.easycarwash.Maps"
-        app:layout_collapseParallaxMultiplier="0.3" />
+        app:layout_collapseParallaxMultiplier="0.3"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/btnMaps"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/btnMaps"
+        android:elevation="4dp"
+        tools:targetApi="lollipop"
+        tools:ignore="HardcodedText"
+        android:background="@drawable/btn_maps"
+        android:gravity="center"
+        android:text="Mostrar Autolavados"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
 
-</LinearLayout>
+</RelativeLayout>

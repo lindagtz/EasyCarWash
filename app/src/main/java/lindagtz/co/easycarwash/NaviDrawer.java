@@ -116,10 +116,6 @@ public class NaviDrawer extends AppCompatActivity {
 
                             startActivity(new Intent(getApplicationContext(), Maps.class));
 
-                        } else if (id == R.id.nav_serv) {
-
-                            Servicios servicios=new Servicios();
-                            fragmentManager.beginTransaction().replace(R.id.content_navi_drawer, servicios).commit();
                         } else if (id == R.id.nav_cerrar) {
                             startActivity(new Intent(getApplicationContext(), Login.class));
 

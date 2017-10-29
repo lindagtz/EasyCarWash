@@ -58,11 +58,13 @@
             android:name=".RegistroAuto"
             android:label="@string/title_activity_registro_auto" />
         <activity
-            android:name=".Perfil"
+            android:name=".Perfi"
             android:label="@string/title_activity_perfil"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Welcome" />
-        <activity android:name=".Acercade" />
+        <activity android:name=".FragmentWelcome"
+            android:label="@string/title_activity_welcome"/>
+        <activity android:name=".Acercade"
+            android:label="@string/title_activity_acercade"/>
         <activity
             android:name=".NaviDrawer"
             android:label="@string/title_activity_navi_drawer"

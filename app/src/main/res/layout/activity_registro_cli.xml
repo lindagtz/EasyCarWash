@@ -21,7 +21,7 @@
         android:layout_toEndOf="@+id/textView5"
         android:layout_marginBottom="68dp"
         android:id="@+id/regGuardar"
-        android:background="#90CAF9"></Button>
+        android:background="@drawable/btn_redondo"></Button>
 
     <Button
         android:text="Cancelar"
@@ -32,7 +32,7 @@
         android:layout_alignEnd="@+id/edDireccionc"
         android:layout_marginEnd="41dp"
         android:id="@+id/regCancelar"
-        android:background="#90CAF9"></Button>
+        android:background="@drawable/btn_redondo"></Button>
 
     <TextView
         android:text="2"

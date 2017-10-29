@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EasyCarWash</string>
+    <string name="app_name">Easy CarWash</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="map_type_none">Ninguno</string>
@@ -31,14 +31,15 @@
     <string name="log_out_item">Cerrar Sesión</string>
     <string name="configuracion_item">Configuración</string>
     <string name="title_activity_test">test</string>
-    <string name="title_activity_profile">Profile</string>
-    <string name="title_activity_perfil">Perfil</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_navi_drawer">Easy CarWash</string>
+    <string name="title_activity_perfil">Perfil</string>
+    <string name="title_activity_welcome">Bienvenido</string>
+    <string name="title_activity_acercade">Acerca de</string>
     <string name="title_activity_solicita_servicio">Solicitar Servicio</string>
-    <string name="button">Button</string>
+    <string name="button">Inicio</string>
 
 </resources>
 

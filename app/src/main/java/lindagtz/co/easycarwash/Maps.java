@@ -52,7 +52,7 @@ import java.util.ArrayList;
 public class Maps extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
     private GoogleMap mMap;
     private Marker marcador;
-    Button consulta;
+    Button consulta, inicio;
     SupportMapFragment mapFragment;
     TextView info;
     public String descrip=null;
@@ -65,6 +65,7 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
 
         setContentView(R.layout.activity_maps);
         consulta=(Button)findViewById(R.id.btnMaps);
+       // inicio=(Button) findViewById(R.id.btnInicio);
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
 
@@ -83,8 +84,13 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
                      .setAction("Action", null).show();
          }
      });
-
-
+     /*   inicio.setOnClickListener(new View.OnClickListener() {
+    @Override
+     public void onClick(View v) {
+       Intent in= new Intent(Maps.this, NaviDrawer.class);
+        startActivity(in);
+    }
+});*/
 
     }
  ///*  @Override

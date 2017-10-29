@@ -14,47 +14,23 @@
     tools:showIn="@layout/activity_solicita_servicio">
 
     <TextView
-        android:text="¿Desea solicitar un servicio de autolavado a domicilio?"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="53dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:text="Verifique la información para continuar:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="103dp"
-        android:id="@+id/textView26"
-        android:layout_below="@+id/textView25"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:text="Teléfono del autolavado:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView26"
-        android:layout_alignStart="@+id/textView25"
-        android:layout_marginTop="53dp"
-        android:id="@+id/textView27" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView27"
         android:layout_toEndOf="@+id/textView27"
         android:layout_marginStart="30dp"
-        android:id="@+id/txtTelefAutolavado" />
+        android:id="@+id/txtTelefAutolavado"
+        android:visibility="invisible" />
 
     <TextView
-        android:text="Mensaje:"
+        android:text="Información:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView27"
         android:layout_alignStart="@+id/textView25"
         android:layout_marginTop="30dp"
-        android:id="@+id/textView29" />
+        android:id="@+id/textView29"
+        android:textColor="@color/cast_libraries_material_featurehighlight_outer_highlight_default_color" />
 
     <Button
         android:text="Cancelar"
@@ -66,30 +42,61 @@
         android:background="@drawable/btn_redondo" />
 
     <TextView
-        android:text="Cargando..."
+        android:text="¿Desea solicitar un servicio de autolavado a domicilio?"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView29"
-        android:layout_alignStart="@+id/textView24"
-        android:layout_marginTop="33dp"
-        android:id="@+id/txtcoordenadas" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        android:textColor="@color/cast_libraries_material_featurehighlight_outer_highlight_default_color" />
 
     <TextView
-        android:text="Cargando..."
+        android:text="Por favor espere mientras carga su información..."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtcoordenadas"
-        android:layout_alignEnd="@+id/txtcoordenadas"
-        android:layout_marginTop="44dp"
-        android:id="@+id/txtdireccion" />
+        android:layout_marginTop="54dp"
+        android:id="@+id/textView26"
+        android:layout_below="@+id/textView23"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Se enviará un SMS al autolavado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:id="@+id/textView27"
+        android:layout_below="@+id/textView26"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="Enviar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
         android:id="@+id/btnEnv"
         android:background="@drawable/btn_redondo"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textView26"
+        android:layout_marginBottom="45dp" />
+
+    <TextView
+        android:text="Cargando..."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtdireccion"
+        android:textColor="#4CAF50"
+        android:layout_below="@+id/textView29"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="31dp" />
+
+    <TextView
+        android:text="Cargando..."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtcoordenadas"
+        android:textColor="#4CAF50"
         android:layout_below="@+id/txtdireccion"
-        android:layout_alignStart="@+id/textView26" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="38dp" />
+
 </RelativeLayout>
