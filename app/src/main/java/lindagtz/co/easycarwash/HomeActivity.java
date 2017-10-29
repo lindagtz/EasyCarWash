@@ -24,11 +24,11 @@ String id_user;
 
 
 
-        addSlide(AppIntroFragment.newInstance("Hola!, es un gusto verte de nuevo!","Una aplicación que te hará la vida más fácil!",R.drawable.welcomee,
+        addSlide(AppIntroFragment.newInstance("Hola!, es un gusto verte de nuevo!","Una aplicación que te permitirá tener tu automóvil siempre limpio!",R.drawable.welcomee,
                 Color.parseColor("#29B6F6")));
-        addSlide(AppIntroFragment.newInstance("Localiza autolavados cerca de ti!","Y consulta su información con la ayuda de Google Maps!",R.drawable.gglemps,
+        addSlide(AppIntroFragment.newInstance("Localiza autolavados cerca de tí!","Y consulta su información con la ayuda de Google Maps!",R.drawable.gglemps,
                 Color.parseColor("#b71c1c")));
-        addSlide(AppIntroFragment.newInstance("Servicio de autolavado a domicilio","Solicita ya un servicio de autolavado a domicilio! \n ¡No te quedes atrás!",R.drawable.material_background3,
+        addSlide(AppIntroFragment.newInstance("Servicio de autolavado a domicilio","Solicita ya un servicio de autolavado a domicilio! \n ¡No te quedes atrás!",R.drawable.casawashh,
 
                 Color.parseColor("#AED581")));
 

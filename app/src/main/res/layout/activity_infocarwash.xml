@@ -81,12 +81,12 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView17"
         android:layout_toEndOf="@+id/textView18"
-        android:textColor="#7986CB"
+        android:textColor="#b71c1c"
         android:id="@+id/txtAddress"
         android:textSize="20sp"
         android:layout_marginTop="10dp"
         android:layout_alignStart="@+id/textView14"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginLeft="35dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -96,13 +96,13 @@
         android:layout_marginStart="16dp"
         android:id="@+id/txtTel"
         android:textSize="20sp"
-        android:textColor="#7986CB" />
+        android:textColor="#b71c1c" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView20"
-        android:textColor="#7986CB"
+        android:textColor="#b71c1c"
         android:layout_alignStart="@+id/txtTel"
         android:textSize="20sp"
         android:id="@+id/txtHorario" />
@@ -135,8 +135,8 @@
         android:id="@+id/txtEve"
         android:textColorLink="@android:color/holo_blue_dark"
         android:textColor="@android:color/holo_blue_dark"
-        android:height="20dp"
-        android:textSize="18sp"
+        android:height="25dp"
+        android:textSize="20sp"
         android:layout_below="@+id/textView20"
         android:textStyle="normal|bold"
         android:layout_alignParentStart="true" />
