@@ -24,12 +24,13 @@ String id_user;
 
 
 
-        addSlide(AppIntroFragment.newInstance("1","hola",R.drawable.material_background,
-                Color.parseColor("#00E676")));
-        addSlide(AppIntroFragment.newInstance("2","como",R.drawable.material_background2,
-                Color.parseColor("#26C6DA")));
-        addSlide(AppIntroFragment.newInstance("3","tas",R.drawable.material_background3,
-                Color.parseColor("#f44336")));
+        addSlide(AppIntroFragment.newInstance("Hola!, es un gusto verte de nuevo!","Una aplicación que te hará la vida más fácil!",R.drawable.welcomee,
+                Color.parseColor("#29B6F6")));
+        addSlide(AppIntroFragment.newInstance("Localiza autolavados cerca de ti!","Y consulta su información con la ayuda de Google Maps!",R.drawable.gglemps,
+                Color.parseColor("#b71c1c")));
+        addSlide(AppIntroFragment.newInstance("Servicio de autolavado a domicilio","Solicita ya un servicio de autolavado a domicilio! \n ¡No te quedes atrás!",R.drawable.material_background3,
+
+                Color.parseColor("#AED581")));
 
         showStatusBar(false);
         setBarColor(Color.parseColor("#039BE5"));
@@ -44,6 +45,10 @@ String id_user;
 
     public void onSkipPressed(Fragment currentFragment) {
         super.onSkipPressed(currentFragment);
+        Intent i = new Intent(this,NaviDrawer.class);
+        i.putExtra("id_user",id_user);
+        startActivity(i);
+        finish();
 
         // Do something when users tap on Skip button.
     }

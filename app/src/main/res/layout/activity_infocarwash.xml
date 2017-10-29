@@ -84,7 +84,9 @@
         android:textColor="#7986CB"
         android:id="@+id/txtAddress"
         android:textSize="20sp"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:layout_alignStart="@+id/textView14"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
