@@ -65,7 +65,7 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
 
         setContentView(R.layout.activity_maps);
         consulta=(Button)findViewById(R.id.btnMaps);
-       // inicio=(Button) findViewById(R.id.btnInicio);
+        inicio=(Button) findViewById(R.id.btnHomem);
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
 
@@ -84,19 +84,19 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback, Googl
                      .setAction("Action", null).show();
          }
      });
-     /*   inicio.setOnClickListener(new View.OnClickListener() {
+       inicio.setOnClickListener(new View.OnClickListener() {
     @Override
      public void onClick(View v) {
        Intent in= new Intent(Maps.this, NaviDrawer.class);
         startActivity(in);
     }
-});*/
+});
 
     }
- ///*  @Override
-   /* public void onBackPressed() {
+   @Override
+    public void onBackPressed() {
         moveTaskToBack(true);
-    }*/
+    }
 
     /**
      * Manipulates the map once available.

@@ -1,13 +1,20 @@
 package lindagtz.co.easycarwash;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,8 +29,9 @@ import java.net.URL;
 
 
 public class Perfi extends Fragment {
-EditText usnombre, usdire, ustel;
-    String id_user;
+EditText usnombre, usdire, usemail,telef;
+    Button id;
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,19 +40,32 @@ EditText usnombre, usdire, ustel;
         View v= inflater.inflate(R.layout.fragment_perfi, container, false);
         usnombre=(EditText) v.findViewById(R.id.usnombre);
         usdire=(EditText) v.findViewById(R.id.usdirec);
-        ustel=(EditText) v.findViewById(R.id.ustelef);
-
-        id_user = getActivity().getIntent().getExtras().getString("id_user");
-        Log.i("iduser",id_user);
+        usemail=(EditText) v.findViewById(R.id.usemail);
+        telef=(EditText)v.findViewById(R.id.ustelef);
+        id=(Button)v.findViewById(R.id.btnIdm);
+id.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        update();
+    }
+});
+      //  id_user = getActivity().getIntent().getExtras().getString("id_user");
         return v;
 
 
     }
 
 
+
     @Override
     public void onStart() {
         super.onStart();
+        Snackbar.make(getActivity().getWindow().findViewById(android.R.id.content), "Actualiza tu información!", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("MyId", Context.MODE_PRIVATE);
+        //  SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(HomeActivity.globalPreference_user, Context.MODE_PRIVATE);
+        String id_user= preferences.getString("id_user", "Default id");
+            Log.i("id perfi",id_user);
         new ConsultarDatos().execute("http://easycarwash.hol.es/consultaDatosUser.php?id_user="+id_user);
 
 
@@ -72,8 +93,10 @@ EditText usnombre, usdire, ustel;
 //para mostrar los datos del autolavado esta en un arreglo json
                 //te.setText(ja.getString(2));
                 usnombre.setText(""+ja.getString(1)+"");
+                usemail.setText(""+ja.getString(2)+"");
                 usdire.setText(""+ja.getString(4)+"");
-                ustel.setText(""+ja.getString(5)+"");
+                telef.setText(""+ja.getString(5)+"");
+
 
 
 
@@ -87,6 +110,42 @@ EditText usnombre, usdire, ustel;
 
 
     }
+
+
+    public void update(){
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("MyId", Context.MODE_PRIVATE);
+        //  SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(HomeActivity.globalPreference_user, Context.MODE_PRIVATE);
+        String id_user= preferences.getString("id_user", "Default id");
+
+        new CargarDatos().execute("http://easycarwash.hol.es/updatecli.php?name="+usnombre.getText().toString()+
+                "&email="+usemail.getText().toString()+
+                "&direccion="+usdire.getText().toString()+
+                "&telefono="+telef.getText().toString()+
+                "&id_user="+id_user);
+
+
+    }
+    private class CargarDatos extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            // params comes from the execute() call: params[0] is the url.
+            try {
+                return downloadUrl(urls[0]);
+            } catch (IOException e) {
+                return "Unable to retrieve web page. URL may be invalid.";
+            }
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+
+            Snackbar.make(getActivity().getWindow().findViewById(android.R.id.content), "Los datos se actualizaron correctamente!", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+            Log.i("ok","ok");
+        }
+    }
+
 
 
     private String downloadUrl(String myurl) throws IOException {

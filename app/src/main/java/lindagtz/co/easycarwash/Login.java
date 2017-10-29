@@ -230,6 +230,7 @@ public class Login extends AppCompatActivity {
                     Log.i("id:",part2);
                 Intent intent = new Intent(Login.this,HomeActivity.class);
                 part2 = parts[1]; // id
+
                 intent.putExtra("id_user",part2);
                 startActivity(intent);
                 Login.this.finish();

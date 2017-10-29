@@ -1,6 +1,8 @@
 package lindagtz.co.easycarwash;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -65,7 +67,6 @@ String id_auto,id_user, tel;
 
 
 
-
    /* private void listenerForRatingBar() {
 
 
@@ -85,6 +86,10 @@ String id_auto,id_user, tel;
         // TODO Auto-generated method stub
         super.onStart();
         new ConsultarDatos().execute("http://easycarwash.hol.es/consultaUserAuto.php?id_autolavado="+id_auto);
+        SharedPreferences sharedPreferences= getSharedPreferences("MyId", Context.MODE_PRIVATE);
+        //  SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(HomeActivity.globalPreference_user, Context.MODE_PRIVATE);
+        String id_userr= sharedPreferences.getString("id_user", "Default id");
+
         //new ConsultarDatos().execute("http://easycarwash.hol.es/consultaAutoId.php?id_autolavado="+id_auto);
 
 

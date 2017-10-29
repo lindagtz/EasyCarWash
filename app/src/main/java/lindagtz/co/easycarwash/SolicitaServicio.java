@@ -143,7 +143,7 @@ public class SolicitaServicio extends AppCompatActivity implements LocationListe
         btnCanc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(SolicitaServicio.this, Maps.class);
+                Intent i=new Intent(SolicitaServicio.this, NaviDrawer.class);
                 startActivity(i);
             }
         });

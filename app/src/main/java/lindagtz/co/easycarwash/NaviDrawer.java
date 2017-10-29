@@ -28,6 +28,7 @@ public class NaviDrawer extends AppCompatActivity {
         setContentView(R.layout.activity_navi_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        FloatingActionButton fab=(FloatingActionButton)findViewById(R.id.fab);
         FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
         tx.replace(R.id.content_navi_drawer, new FragmentWelcome());
         tx.commit();
@@ -44,21 +45,29 @@ public class NaviDrawer extends AppCompatActivity {
             setupDrawerContent(navigationView);
         }
 
-
+fab.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent i= new Intent(NaviDrawer.this, NaviDrawer.class);
+        startActivity(i);
+    }
+});
 
 
     }
 
-
+//al irse para atrás las
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            moveTaskToBack(true);
         }
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -119,8 +128,9 @@ public class NaviDrawer extends AppCompatActivity {
                         } else if (id == R.id.nav_cerrar) {
                             startActivity(new Intent(getApplicationContext(), Login.class));
 
+                        }else if (id == R.id.nav_quejas) {
+                            startActivity(new Intent(getApplicationContext(), Login.class));
                         }
-
                         DrawerLayout drawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         return true;

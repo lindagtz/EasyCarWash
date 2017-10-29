@@ -8,17 +8,6 @@
     android:id="@+id/idLayout">
 
     <Button
-        android:text="Inicio"
-        android:layout_width="185dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnInicio"
-        android:background="@drawable/btn_redondo"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_above="@+id/map"
-        tools:ignore="HardcodedText" />
-
-    <Button
         android:layout_width="165dp"
         android:layout_height="72dp"
         android:id="@+id/btnMaps"

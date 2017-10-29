@@ -10,24 +10,53 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:text="Nombre:"
+        android:text="Email:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView12"
-        android:layout_marginEnd="42dp"
-        android:layout_alignBaseline="@+id/usnombre"
-        android:layout_alignBottom="@+id/usnombre"
-        android:layout_toStartOf="@+id/usnombre"
-        android:textSize="18sp" />
+        android:id="@+id/textView22"
+        android:textSize="18sp"
+        android:layout_alignStart="@+id/textView12"
+        android:layout_alignTop="@+id/usemail"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:text="Dirección:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView21"
+        android:textSize="18sp"
+        android:layout_below="@+id/usemail"
+        android:layout_alignStart="@+id/textView22"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:text="Teléfono:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/usdirec"
+        android:layout_alignStart="@+id/textView21"
+        android:id="@+id/textView13"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:layout_below="@+id/usdirec"
+        android:layout_alignEnd="@+id/usdirec"
+        android:layout_marginTop="10dp"
+        android:id="@+id/ustelef" />
 
     <TextView
         android:text="Mi perfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="163dp"
         android:id="@+id/textView10"
         android:textColor="@color/accentColor"
         android:textSize="30sp"
+        android:layout_marginTop="111dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -36,48 +65,71 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
+        android:id="@+id/usdirec"
+        android:layout_alignBaseline="@+id/textView21"
+        android:layout_alignBottom="@+id/textView21"
+        android:layout_alignStart="@+id/usemail"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:text="modificar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnIdm"
+        android:onClick="update()"
+        android:background="@drawable/btn_redondo"
+        android:layout_below="@+id/ustelef"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp" />
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/profile_azul"
+        android:id="@+id/imageView6"
+        android:layout_alignBottom="@+id/textView10"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/usemail"
+        android:layout_below="@+id/usnombre"
+        android:layout_alignStart="@+id/usnombre"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:text="Nombre:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView12"
+        android:textSize="18sp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="53dp"
+        android:layout_below="@+id/imageView6"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
         android:id="@+id/usnombre"
-        android:layout_centerVertical="true"
+        android:layout_alignBaseline="@+id/textView12"
+        android:layout_alignBottom="@+id/textView12"
         android:layout_alignStart="@+id/textView10" />
 
     <TextView
-        android:text="Dirección:"
+        android:text="Actualiza tu información:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/usnombre"
-        android:layout_alignStart="@+id/textView12"
-        android:layout_marginTop="35dp"
-        android:id="@+id/textView21"
-        android:textSize="18sp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_below="@+id/usnombre"
-        android:layout_alignStart="@+id/usnombre"
-        android:layout_marginTop="20dp"
-        android:id="@+id/usdirec" />
-
-    <TextView
-        android:text="Teléfono:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:id="@+id/textView22"
-        android:layout_below="@+id/usdirec"
-        android:layout_alignStart="@+id/textView21"
-        android:textSize="18sp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/ustelef"
-        android:layout_alignBaseline="@+id/textView22"
-        android:layout_alignBottom="@+id/textView22"
-        android:layout_alignStart="@+id/usdirec" />
+        android:id="@+id/textView24"
+        android:textSize="18sp"
+        android:layout_below="@+id/textView10"
+        android:layout_alignEnd="@+id/imageView6"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>

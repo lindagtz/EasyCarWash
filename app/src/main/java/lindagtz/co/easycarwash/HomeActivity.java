@@ -1,7 +1,10 @@
 package lindagtz.co.easycarwash;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +16,7 @@ import com.github.paolorotolo.appintro.AppIntroFragment;
 
 public class HomeActivity extends AppIntro {
 String id_user;
+    public static String globalPreference_user="com.user.id";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -20,6 +24,12 @@ String id_user;
         super.onCreate(savedInstanceState);
         Bundle bundle = getIntent().getExtras();
         id_user=bundle.getString("id_user");
+       // SharedPreferences.Editor editor=getSharedPreferences(globalPreference_user, MODE_PRIVATE).edit();
+        SharedPreferences sharedPreferences= getSharedPreferences("MyId", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString("id_user",id_user);
+        editor.commit();
+
         Log.i("iduser",id_user);
 
 
